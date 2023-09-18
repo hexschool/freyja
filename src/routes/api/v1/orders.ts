@@ -1,6 +1,34 @@
-// ## Orders（訂單）
+import { createRouter } from '@/utils';
+import * as OrderController from '@/controllers/order';
 
-// - [Post] /api/v1/orders - 訂單建立
-// - [Get] /api/v1/orders - 訂單列表
-// - [Get] /api/v1/orders/:id - 訂單詳細資料
-// - [Delete] /api/v1/orders/:id - 取消訂單
+const router = createRouter();
+
+router.get('/orders', OrderController.getOrderList, () => {
+    /**
+     * #swagger.tags = ["Orders - 訂單"]
+     * #swagger.description  = "訂單列表"
+     */
+});
+
+router.get('/orders/:orderId', OrderController.getOrderById, () => {
+    /**
+     * #swagger.tags = ["Orders - 訂單"]
+     * #swagger.description  = "訂單詳細資料"
+     */
+});
+
+router.post('/orders/:orderId', OrderController.createOneOrder, () => {
+    /**
+     * #swagger.tags = ["Orders - 訂單"]
+     * #swagger.description  = "訂單詳細資料"
+     */
+});
+
+router.delete('/orders/:orderId', OrderController.deleteOrderById, () => {
+    /**
+     * #swagger.tags = ["Orders - 訂單"]
+     * #swagger.description  = "取消訂單"
+     */
+});
+
+export default router;

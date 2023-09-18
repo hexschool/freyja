@@ -89,9 +89,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "any"
-                },
                 "email": {
                   "example": "any"
                 },
@@ -136,6 +133,19 @@
           "200": {
             "description": "OK"
           }
+        }
+      }
+    },
+    "/api/v1/user/check": {
+      "get": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "檢查是否登入",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         },
         "security": [
           {
@@ -144,7 +154,23 @@
         ]
       }
     },
-    "/api/v1/user/updateProfile": {
+    "/api/v1/user/": {
+      "get": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "取得使用者資訊",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
       "put": {
         "tags": [
           "Users - 使用者"
@@ -160,10 +186,10 @@
                 "userId": {
                   "example": "any"
                 },
-                "name": {
+                "oldPassword": {
                   "example": "any"
                 },
-                "avatar": {
+                "newPassword": {
                   "example": "any"
                 }
               }
@@ -182,22 +208,193 @@
         ]
       }
     },
-    "/api/v1/user/check": {
+    "/api/v1/verify/{email}": {
       "get": {
         "tags": [
-          "Users - 使用者"
+          "Verify - 驗證"
         ],
-        "description": "驗證登入",
+        "description": "驗證信箱是否註冊過",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "bearerAuth": []
+        }
+      }
+    },
+    "/api/v1/home/news": {
+      "get": {
+        "tags": [
+          "Home - 首頁"
+        ],
+        "description": "最新消息",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
-        ]
+        }
+      }
+    },
+    "/api/v1/home/news/{newId}": {
+      "get": {
+        "tags": [
+          "Home - 首頁"
+        ],
+        "description": "最新消息詳細資料",
+        "parameters": [
+          {
+            "name": "newId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/home/culinary": {
+      "get": {
+        "tags": [
+          "Home - 首頁"
+        ],
+        "description": "美味佳餚",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/rooms/rooms": {
+      "get": {
+        "tags": [
+          "Rooms - 房型"
+        ],
+        "description": "房型列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/rooms/rooms/{roomId}": {
+      "get": {
+        "tags": [
+          "Rooms - 房型"
+        ],
+        "description": "房型詳細資料",
+        "parameters": [
+          {
+            "name": "roomId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/orders/orders": {
+      "get": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "訂單列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/orders/orders/{orderId}": {
+      "get": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "訂單詳細資料",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "訂單詳細資料",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roomInfo": {
+                  "example": "any"
+                },
+                "userInfo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "取消訂單",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   }

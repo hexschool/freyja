@@ -1,4 +1,20 @@
-// ## Rooms（房型）
+import { createRouter } from '@/utils';
+import * as RoomController from '@/controllers/room';
 
-// - [Get] /api/v1/rooms - 房型列表
-// - [Get] /api/v1/rooms/:id - 房型詳細資料
+const router = createRouter();
+
+router.get('/rooms', RoomController.getRoomList, () => {
+    /**
+     * #swagger.tags = ["Rooms - 房型"]
+     * #swagger.description  = "房型列表"
+     */
+});
+
+router.get('/rooms/:roomId', RoomController.getRoomById, () => {
+    /**
+     * #swagger.tags = ["Rooms - 房型"]
+     * #swagger.description  = "房型詳細資料"
+     */
+});
+
+export default router;

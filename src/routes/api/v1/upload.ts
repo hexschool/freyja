@@ -12,9 +12,9 @@ router.post('/', handleUploadFile, getImageUrl, () => {
      * #swagger.description  = "上傳圖片"
      * #swagger.consumes = ['multipart/form-data']  
      * #swagger.parameters["image"] = {
-          in: 'formData',
-          type: 'file',
-          required: 'true',
+            in: 'formData',
+            type: 'file',
+            required: 'true',
         } 
     */
 });

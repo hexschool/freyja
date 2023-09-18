@@ -17,22 +17,22 @@ import type { ErrorRequestHandler, RequestHandler } from 'express';
 })();
 
 export const sendNotFoundError: RequestHandler = (_req, res) => {
-    res.status(404).send({ status: 'error', message: '無此路由資訊' });
+    res.status(404).send({ status: false, message: '無此路由資訊' });
 };
 
 export const catchCustomError: ErrorRequestHandler = (err: Error | string, _req, res, _next) => {
     if (typeof err === 'string') {
-        return res.status(400).send({ status: 'error', message: err });
+        return res.status(400).send({ status: false, message: err });
     }
 
     if ('type' in err && err.type === 'entity.parse.failed') {
-        return res.status(400).send({ status: 'error', message: err.type });
+        return res.status(400).send({ status: false, message: err.type });
     }
 
     // 開發模式回傳錯誤訊息
     if (!import.meta.env.PROD) {
-        return res.status(400).send({ status: 'error', message: err.message, err });
+        return res.status(400).send({ status: false, message: err.message, err });
     }
 
-    return res.status(400).send({ status: 'error', message: err.message });
+    return res.status(400).send({ status: false, message: err.message });
 };

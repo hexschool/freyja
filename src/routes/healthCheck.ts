@@ -4,7 +4,7 @@ const router = createRouter();
 
 router.get('/', (req, res) => {
     const healthCheck = {
-        status: 'success',
+        status: true,
         message: 'OK',
         uptime: process.uptime(),
         timestamp: Date.now(),

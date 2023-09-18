@@ -70,11 +70,6 @@ export function checkValidator(param: { [key: string]: string | number | undefin
                     throw new Error('image 格式不正確');
                 }
                 break;
-            case 'avatar':
-                if (!validator.isURL(value, { protocols: ['https'] })) {
-                    throw new Error('avatar 格式不正確');
-                }
-                break;
             default:
                 break;
         }

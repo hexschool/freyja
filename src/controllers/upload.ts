@@ -17,5 +17,5 @@ export const getImageUrl: RequestHandler = async (req, res) => {
         }
     }).then(value => value.json());
 
-    res.send({ status: 'success', result: data });
+    res.send({ status: true, result: data });
 };

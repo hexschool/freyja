@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import '@/app/env';
 import '@/app/connection';
 import Routes from '@/routes';
-import * as Exception from '@/app/exception';
+import Exception from '@/app/exception';
 
 export const app = express();
 

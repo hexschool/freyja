@@ -232,9 +232,44 @@
     "/api/v1/home/news": {
       "get": {
         "tags": [
-          "Home - 首頁"
+          "Home - 首頁 - 最新消息"
         ],
-        "description": "最新消息",
+        "description": "取得所有最新消息",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Home - 首頁 - 最新消息"
+        ],
+        "description": "新增最新消息",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "秋季旅遊，豪華享受方案"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "秋天就是要來場豪華的旅遊..."
+                },
+                "image": {
+                  "type": "string",
+                  "example": "https://fakeimg.pl/300/"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -242,15 +277,74 @@
         }
       }
     },
-    "/api/v1/home/news/{newId}": {
+    "/api/v1/home/news/{id}": {
       "get": {
         "tags": [
-          "Home - 首頁"
+          "Home - 首頁 - 最新消息"
         ],
-        "description": "最新消息詳細資料",
+        "description": "取得單筆最新消息",
         "parameters": [
           {
-            "name": "newId",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Home - 首頁 - 最新消息"
+        ],
+        "description": "修改最新消息",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "修改 - 秋季旅遊，豪華享受方案"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "修改 - 秋天就是要來場豪華的旅遊..."
+                },
+                "image": {
+                  "type": "string",
+                  "example": "修改 - https://fakeimg.pl/300/"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Home - 首頁 - 最新消息"
+        ],
+        "description": "刪除最新消息",
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -266,9 +360,124 @@
     "/api/v1/home/culinary": {
       "get": {
         "tags": [
-          "Home - 首頁"
+          "Home - 首頁 - 美味佳餚"
         ],
-        "description": "美味佳餚",
+        "description": "取得所有美味佳餚",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Home - 首頁 - 美味佳餚"
+        ],
+        "description": "新增美味佳餚",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "海霸"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "以新鮮海產料理聞名..."
+                },
+                "image": {
+                  "type": "string",
+                  "example": "https://fakeimg.pl/300/"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/home/culinary/{id}": {
+      "get": {
+        "tags": [
+          "Home - 首頁 - 美味佳餚"
+        ],
+        "description": "取得單筆美味佳餚",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Home - 首頁 - 美味佳餚"
+        ],
+        "description": "修改美味佳餚",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "修改 - 海霸"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "修改 - 以新鮮海產料理聞名..."
+                },
+                "image": {
+                  "type": "string",
+                  "example": "修改 - https://fakeimg.pl/300/"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Home - 首頁 - 美味佳餚"
+        ],
+        "description": "刪除美味佳餚",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

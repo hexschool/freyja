@@ -6,7 +6,10 @@ export interface IUser extends Document {
     password: string;
     phone: string;
     birthday: string;
-    address: string;
+    address: {
+        zipcode: number;
+        detail: string;
+    };
 }
 
 const userSchema = new Schema<IUser>(
@@ -33,8 +36,14 @@ const userSchema = new Schema<IUser>(
             required: [true, 'birthday 未填寫']
         },
         address: {
-            type: String,
-            required: [true, 'address 未填寫']
+            zipcode: {
+                type: Number,
+                required: [true, 'zipcode 未填寫']
+            },
+            detail: {
+                type: String,
+                required: [true, 'detail 未填寫']
+            }
         }
     },
     {

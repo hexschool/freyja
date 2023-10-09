@@ -23,11 +23,12 @@ export const getCulinaryById: RequestHandler = async (req, res) => {
 };
 
 export const createOneCulinary: RequestHandler = async (req, res) => {
-    const { title, description, image } = req.body;
+    const { title, description, diningTime, image } = req.body;
 
     const result = await CulinaryModel.create({
         title,
         description,
+        diningTime,
         image
     });
 
@@ -38,13 +39,14 @@ export const createOneCulinary: RequestHandler = async (req, res) => {
 };
 
 export const updateCulinaryById: RequestHandler = async (req, res) => {
-    const { title, description, image } = req.body;
+    const { title, description, diningTime, image } = req.body;
 
     const result = await CulinaryModel.findByIdAndUpdate(
         req.params.id,
         {
             title,
             description,
+            diningTime,
             image
         },
         {

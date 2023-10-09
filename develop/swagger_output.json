@@ -390,6 +390,10 @@
                   "type": "string",
                   "example": "以新鮮海產料理聞名..."
                 },
+                "diningTime": {
+                  "type": "string",
+                  "example": "SUN-MON 11:00-20:30"
+                },
                 "image": {
                   "type": "string",
                   "example": "https://fakeimg.pl/300/"
@@ -450,6 +454,10 @@
                 "description": {
                   "type": "string",
                   "example": "修改 - 以新鮮海產料理聞名..."
+                },
+                "diningTime": {
+                  "type": "string",
+                  "example": "SUN-MON 11:00-20:30"
                 },
                 "image": {
                   "type": "string",

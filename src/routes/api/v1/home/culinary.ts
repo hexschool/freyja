@@ -27,6 +27,7 @@ router.post('/culinary', CulinaryController.createOneCulinary, () => {
             schema: {
                 title: "海霸",
                 description: "以新鮮海產料理聞名...",
+                diningTime: "SUN-MON 11:00-20:30",
                 image: "https://fakeimg.pl/300/"
             }
         }
@@ -42,6 +43,7 @@ router.put('/culinary/:id', CulinaryController.updateCulinaryById, () => {
             schema: {
                 title: "修改 - 海霸",
                 description: "修改 - 以新鮮海產料理聞名...",
+                diningTime: "SUN-MON 11:00-20:30",
                 image: "修改 - https://fakeimg.pl/300/"
             }
         }

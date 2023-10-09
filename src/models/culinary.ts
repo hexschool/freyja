@@ -3,6 +3,7 @@ import { Schema, model, type Document } from 'mongoose';
 export interface ICulinary extends Document {
     title: string;
     description: string;
+    diningTime: string;
     image: string;
 }
 
@@ -15,6 +16,10 @@ const culinarySchema = new Schema<ICulinary>(
         description: {
             type: String,
             required: [true, 'description 未填寫']
+        },
+        diningTime: {
+            type: String,
+            required: [true, 'diningTime 未填寫']
         },
         image: {
             type: String,

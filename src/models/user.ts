@@ -1,4 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
+import { zipCodeList } from '@/utils/zipcodes';
 
 export interface IUser extends Document {
     name: string;
@@ -39,7 +40,13 @@ const userSchema = new Schema<IUser>(
         address: {
             zipcode: {
                 type: Number,
-                required: [true, 'zipcode 未填寫']
+                required: [true, 'zipcode 未填寫'],
+                validate: {
+                    validator(zipcode: number) {
+                        return zipCodeList.includes(zipcode);
+                    },
+                    message: 'zipcode 錯誤'
+                }
             },
             detail: {
                 type: String,

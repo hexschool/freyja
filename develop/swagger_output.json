@@ -147,14 +147,13 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "password": {
-                  "example": "any"
-                },
-                "userId": {
-                  "example": "any"
+                "email": {
+                  "type": "string",
+                  "example": "timmothy.ramos@example.com"
                 }
               }
             }

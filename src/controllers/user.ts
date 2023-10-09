@@ -52,15 +52,15 @@ export const login: RequestHandler = async (req, res) => {
     });
 };
 
-// TODO: 忘記密碼流程
 export const forget: RequestHandler = async (req, res) => {
-    const password = await bcrypt.hash(req.body.password, 6);
-    const result = await UsersModel.findByIdAndUpdate(req.body.userId, {
-        password
-    });
+    const { email } = req.body;
+    const result = await UsersModel.findOne({ email });
     if (!result) {
         throw new Error('此 id 不存在');
     }
+
+    // TODO: 忘記密碼流程
+
     res.send({ status: true });
 };
 

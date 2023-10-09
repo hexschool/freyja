@@ -47,6 +47,13 @@ router.post('/forgot', UserController.forget, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "忘記密碼"
+     * #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                email: "timmothy.ramos@example.com",
+            }
+        }
      */
 });
 

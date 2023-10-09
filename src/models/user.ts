@@ -10,6 +10,7 @@ export interface IUser extends Document {
         zipcode: number;
         detail: string;
     };
+    isEmailVerification: boolean;
 }
 
 const userSchema = new Schema<IUser>(
@@ -44,6 +45,10 @@ const userSchema = new Schema<IUser>(
                 type: String,
                 required: [true, 'detail 未填寫']
             }
+        },
+        isEmailVerification: {
+            type: Boolean,
+            default: false
         }
     },
     {

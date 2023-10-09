@@ -56,14 +56,17 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "timmothy.ramos@example.com"
                 },
                 "password": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Dirt5528295"
                 }
               }
             }
@@ -86,14 +89,42 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Lori Murphy"
+                },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "lori.murphy@example.com"
                 },
                 "password": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "密碼"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "(663) 742-3828"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1982/2/4"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "zipcode": {
+                      "type": "number",
+                      "example": 802
+                    },
+                    "detail": {
+                      "type": "string",
+                      "example": "文山路23號"
+                    }
+                  }
                 }
               }
             }
@@ -180,17 +211,46 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "userId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "6523e9fc3a22dd8d8207ef80"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Kylie Stanley"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "(937) 233-2482"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1948/6/5"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "zipcode": {
+                      "type": "number",
+                      "example": 802
+                    },
+                    "detail": {
+                      "type": "string",
+                      "example": "文山路23號"
+                    }
+                  }
                 },
                 "oldPassword": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "舊密碼"
                 },
                 "newPassword": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "新密碼"
                 }
               }
             }

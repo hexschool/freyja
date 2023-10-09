@@ -1,10 +1,10 @@
-import type { RequestHandler } from 'express';
+import type { Request, RequestHandler } from 'express';
 import bcrypt from 'bcryptjs';
 import UsersModel from '@/models/user';
 import { generateToken } from '@/utils';
 
 export const signup: RequestHandler = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { name, email, password, phone, birthday, address } = req.body;
 
     const checkEmail = await UsersModel.findOne({ email });
     if (checkEmail) {
@@ -12,7 +12,11 @@ export const signup: RequestHandler = async (req, res, next) => {
     }
 
     const _result = await UsersModel.create({
-        ...req.body,
+        name,
+        email,
+        phone,
+        birthday,
+        address,
         password: await bcrypt.hash(password, 6)
     });
     const { password: _, ...result } = _result.toObject();
@@ -75,7 +79,32 @@ export const getInfo: RequestHandler = async (req, res) => {
 };
 
 export const updateInfo: RequestHandler = async (req, res) => {
+    // 更新密碼
+    await updateUserPassword(req);
+
+    const { userId, name, phone, birthday, address } = req.body;
+
+    const result = await UsersModel.findByIdAndUpdate(
+        userId,
+        {
+            name,
+            phone,
+            birthday,
+            address
+        },
+        {
+            new: true
+        }
+    );
+
+    res.send({ status: true, result });
+};
+
+const updateUserPassword = async (req: Request) => {
     const { userId, oldPassword, newPassword } = req.body;
+    if (!oldPassword || !newPassword) {
+        return null;
+    }
 
     const user = await UsersModel.findById(userId).select('+password');
     if (!user) {
@@ -90,7 +119,6 @@ export const updateInfo: RequestHandler = async (req, res) => {
     const result = await UsersModel.findByIdAndUpdate(
         userId,
         {
-            ...req.body,
             password: await bcrypt.hash(newPassword, 6)
         },
         {
@@ -98,5 +126,5 @@ export const updateInfo: RequestHandler = async (req, res) => {
         }
     );
 
-    res.send({ status: true, result });
+    return result;
 };

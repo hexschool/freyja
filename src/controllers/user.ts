@@ -93,7 +93,8 @@ export const updateInfo: RequestHandler = async (req, res) => {
             address
         },
         {
-            new: true
+            new: true,
+            runValidators: true
         }
     );
 

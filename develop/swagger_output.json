@@ -563,9 +563,75 @@
             "description": "OK"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Rooms - 房型"
+        ],
+        "description": "新增房型",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "尊爵雙人房"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "私人衛浴 • 市景 • 免費盥洗用品 • 淋浴間 • 空調 • 毛巾 • 床單 • 床邊插座...."
+                },
+                "imageUrl": {
+                  "type": "string",
+                  "example": "https://fakeimg.pl/300/"
+                },
+                "imageUrlList": {
+                  "type": "array",
+                  "example": [
+                    "https://fakeimg.pl/300/",
+                    "https://fakeimg.pl/300/",
+                    "https://fakeimg.pl/300/"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "areaInfo": {
+                  "type": "string",
+                  "example": "24坪"
+                },
+                "bedInfo": {
+                  "type": "string",
+                  "example": "一張大床"
+                },
+                "maxPeople": {
+                  "type": "number",
+                  "example": 4
+                },
+                "price": {
+                  "type": "number",
+                  "example": 10000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
-    "/api/v1/rooms/rooms/{roomId}": {
+    "/api/v1/rooms/rooms/{id}": {
       "get": {
         "tags": [
           "Rooms - 房型"
@@ -573,7 +639,97 @@
         "description": "房型詳細資料",
         "parameters": [
           {
-            "name": "roomId",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Rooms - 房型"
+        ],
+        "description": "修改房型",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "景觀雙人房"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "景觀雙人房擁有絕美的高雄市景觀，讓您在舒適的環境中欣賞城市之美。"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "私人衛浴 • 市景 • 免費盥洗用品 • 淋浴間 • 空調 • 毛巾 • 床單 • 床邊插座...."
+                },
+                "imageUrl": {
+                  "type": "string",
+                  "example": "https://fakeimg.pl/300/"
+                },
+                "imageUrlList": {
+                  "type": "array",
+                  "example": [
+                    "https://fakeimg.pl/300/",
+                    "https://fakeimg.pl/300/",
+                    "https://fakeimg.pl/300/"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "areaInfo": {
+                  "type": "string",
+                  "example": "28坪"
+                },
+                "bedInfo": {
+                  "type": "string",
+                  "example": "兩張大床"
+                },
+                "maxPeople": {
+                  "type": "number",
+                  "example": 4
+                },
+                "price": {
+                  "type": "number",
+                  "example": 18000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Rooms - 房型"
+        ],
+        "description": "刪除房型",
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"

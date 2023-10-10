@@ -1,4 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
+import validator from 'validator';
 
 export interface IRoom extends Document {
     name: string;
@@ -8,7 +9,7 @@ export interface IRoom extends Document {
     imageUrlList: string[];
     areaInfo: string;
     bedInfo: string;
-    peopleInfo: string;
+    maxPeople: number;
     price: number;
 }
 
@@ -28,12 +29,24 @@ const roomSchema = new Schema<IRoom>(
         },
         imageUrl: {
             type: String,
-            required: [true, 'imageUrl 未填寫']
+            required: [true, 'imageUrl 未填寫'],
+            validate: {
+                validator(value: string) {
+                    return validator.isURL(value, { protocols: ['https'] });
+                },
+                message: 'imageUrl 格式不正確'
+            }
         },
         imageUrlList: [
             {
                 type: String,
-                trim: true
+                trim: true,
+                validate: {
+                    validator(value: string) {
+                        return validator.isURL(value, { protocols: ['https'] });
+                    },
+                    message: 'imageUrlList 格式不正確'
+                }
             }
         ],
         areaInfo: {
@@ -44,9 +57,15 @@ const roomSchema = new Schema<IRoom>(
             type: String,
             required: [true, 'bedInfo 未填寫']
         },
-        peopleInfo: {
-            type: String,
-            required: [true, 'peopleInfo 未填寫']
+        maxPeople: {
+            type: Number,
+            required: [true, 'maxPeople 未填寫'],
+            validate: {
+                validator(value: number) {
+                    return validator.isInt(`${value}`, { min: 1 });
+                },
+                message: 'maxPeople 格式不正確'
+            }
         },
         price: {
             type: Number,

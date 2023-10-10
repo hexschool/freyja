@@ -48,7 +48,8 @@ export const updateNewById: RequestHandler = async (req, res) => {
             image
         },
         {
-            new: true
+            new: true,
+            runValidators: true
         }
     );
     if (!result) {

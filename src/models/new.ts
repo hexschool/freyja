@@ -1,4 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
+import validator from 'validator';
 
 export interface INew extends Document {
     title: string;
@@ -18,7 +19,13 @@ const newSchema = new Schema<INew>(
         },
         image: {
             type: String,
-            required: [true, 'image 未填寫']
+            required: [true, 'image 未填寫'],
+            validate: {
+                validator(value: string) {
+                    return validator.isURL(value, { protocols: ['https'] });
+                },
+                message: 'image 格式不正確'
+            }
         }
     },
     {

@@ -50,7 +50,8 @@ export const updateCulinaryById: RequestHandler = async (req, res) => {
             image
         },
         {
-            new: true
+            new: true,
+            runValidators: true
         }
     );
     if (!result) {

@@ -74,8 +74,10 @@ export const check: RequestHandler = async (req, res) => {
 };
 
 export const getInfo: RequestHandler = async (req, res) => {
-    const result = req.user;
-    res.send({ status: true, result });
+    res.send({
+        status: true,
+        result: req.user
+    });
 };
 
 export const updateInfo: RequestHandler = async (req, res) => {
@@ -98,7 +100,10 @@ export const updateInfo: RequestHandler = async (req, res) => {
         }
     );
 
-    res.send({ status: true, result });
+    res.send({
+        status: true,
+        result
+    });
 };
 
 const updateUserPassword = async (req: Request) => {

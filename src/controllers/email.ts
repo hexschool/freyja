@@ -43,7 +43,10 @@ export const sendResetPasswordEmail: RequestHandler = async (req, res) => {
         // });
     }
 
-    res.send({ status: true, message: '密碼重設成功' });
+    res.send({
+        status: true,
+        message: '密碼重設成功'
+    });
 };
 
 // 發送註冊成功 email
@@ -82,7 +85,11 @@ export const emailVerification: RequestHandler = async (req, res) => {
         { new: true }
     );
 
-    res.send({ status: 'true', message: 'email 驗證成功!', result, userInfo });
+    res.send({
+        status: 'true',
+        message: 'email 驗證成功!',
+        result: userInfo
+    });
 };
 
 export const resendEmailVerification: RequestHandler = async (req, res) => {
@@ -107,5 +114,8 @@ export const resendEmailVerification: RequestHandler = async (req, res) => {
     //         </p>`,
     // });
 
-    res.send({ status: true, message: '已發送驗證 Email' });
+    res.send({
+        status: true,
+        message: '已發送驗證 Email'
+    });
 };

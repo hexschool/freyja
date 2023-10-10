@@ -18,13 +18,19 @@ class Exception {
     }
 
     public sendNotFoundError: RequestHandler = (_req, res) => {
-        res.status(404).send({ status: false, message: '無此路由資訊' });
+        res.status(404).send({
+            status: false,
+            message: '無此路由資訊'
+        });
     };
 
     public catchCustomError: ErrorRequestHandler = (err, _req, res, _next) => {
         const message = this.getErrorMessage(err);
 
-        return res.status(err?.status || 500).send({ status: false, ...message });
+        return res.status(err?.status || 500).send({
+            ...message,
+            status: false
+        });
     };
 
     private getErrorMessage = (err: any) => {

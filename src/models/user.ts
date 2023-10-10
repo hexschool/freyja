@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from 'mongoose';
 import validator from 'validator';
-import { zipCodeList } from '@/utils/zipcodes';
+import ZipCodeMap, { zipCodeList } from '@/utils/zipcodes';
 
 export interface IUser extends Document {
     name: string;
@@ -11,6 +11,8 @@ export interface IUser extends Document {
     address: {
         zipcode: number;
         detail: string;
+        county: string;
+        city: string;
     };
     isEmailVerification: boolean;
 }
@@ -73,8 +75,19 @@ const userSchema = new Schema<IUser>(
     },
     {
         versionKey: false,
-        timestamps: true
+        timestamps: true,
+        toObject: {
+            virtuals: true
+        }
     }
 );
+
+userSchema.virtual('address.county').get(function () {
+    return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.county;
+});
+
+userSchema.virtual('address.city').get(function () {
+    return ZipCodeMap.find(value => value.zipcode === this.address.zipcode)?.city;
+});
 
 export default model('user', userSchema);

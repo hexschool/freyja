@@ -752,52 +752,71 @@
           "200": {
             "description": "OK"
           }
-        }
-      }
-    },
-    "/api/v1/orders/orders/{orderId}": {
-      "get": {
-        "tags": [
-          "Orders - 訂單"
-        ],
-        "description": "訂單詳細資料",
-        "parameters": [
+        },
+        "security": [
           {
-            "name": "orderId",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "bearerAuth": []
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        ]
       },
       "post": {
         "tags": [
           "Orders - 訂單"
         ],
-        "description": "訂單詳細資料",
+        "description": "新增訂單",
         "parameters": [
-          {
-            "name": "orderId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "roomInfo": {
-                  "example": "any"
+                "roomId": {
+                  "type": "string",
+                  "example": "65251f6095429cd58654bf12"
+                },
+                "checkInDate": {
+                  "type": "string",
+                  "example": "2023/06/18"
+                },
+                "checkOutDate": {
+                  "type": "string",
+                  "example": "2023/06/19"
+                },
+                "peopleNum": {
+                  "type": "number",
+                  "example": 2
                 },
                 "userInfo": {
-                  "example": "any"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Joanne Chen"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "0912345678"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "example@gmail.com"
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "zipcode": {
+                          "type": "number",
+                          "example": 802
+                        },
+                        "detail": {
+                          "type": "string",
+                          "example": "文山路23號"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -807,16 +826,23 @@
           "200": {
             "description": "OK"
           }
-        }
-      },
-      "delete": {
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orders/orders/{id}": {
+      "get": {
         "tags": [
           "Orders - 訂單"
         ],
-        "description": "取消訂單",
+        "description": "訂單詳細資料",
         "parameters": [
           {
-            "name": "orderId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -826,7 +852,116 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "修改訂單",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roomId": {
+                  "type": "string",
+                  "example": "65251f6095429cd58654bf12"
+                },
+                "checkInDate": {
+                  "type": "string",
+                  "example": "2023/06/18"
+                },
+                "checkOutDate": {
+                  "type": "string",
+                  "example": "2023/06/19"
+                },
+                "peopleNum": {
+                  "type": "number",
+                  "example": 2
+                },
+                "userInfo": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Joanne Chen"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "0912345678"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "example@gmail.com"
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "zipcode": {
+                          "type": "number",
+                          "example": 802
+                        },
+                        "detail": {
+                          "type": "string",
+                          "example": "文山路23號"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Orders - 訂單"
+        ],
+        "description": "取消訂單",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   }

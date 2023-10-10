@@ -6,10 +6,10 @@ const router = createRouter();
 
 router.use(isAuth);
 
-router.get('/orders', OrderController.getOrderList, () => {
+router.get('/orders', OrderController.getUserOrderList, () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
-     * #swagger.description  = "訂單列表"
+     * #swagger.description  = "使用者訂單列表"
      */
 });
 

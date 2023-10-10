@@ -1,8 +1,10 @@
 import type { RequestHandler } from 'express';
 import OrderModel from '@/models/order';
 
-export const getOrderList: RequestHandler = async (_req, res) => {
-    const result = await OrderModel.find().populate({
+export const getUserOrderList: RequestHandler = async (req, res) => {
+    const result = await OrderModel.find({
+        orderUserId: req.user?._id
+    }).populate({
         path: 'roomId'
     });
 

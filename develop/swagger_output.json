@@ -747,7 +747,7 @@
         "tags": [
           "Orders - 訂單"
         ],
-        "description": "訂單列表",
+        "description": "使用者訂單列表",
         "responses": {
           "200": {
             "description": "OK"

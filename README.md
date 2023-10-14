@@ -58,8 +58,6 @@ PORT = 3005
 DATABASE =  DB連結
 DATABASE_PASSWORD = DB密碼
 
-REDIS_URL = redis 連結
-
 JWT_EXPIRES_DAY = token到期日
 JWT_SECRET = Token密鑰
 ```
@@ -69,7 +67,7 @@ JWT_SECRET = Token密鑰
 產生文件
 
 ```bash
-npm run swagger-autogen
+yarn swagger-autogen
 ```
 
 在瀏覽器網址列輸入以下即可看到畫面
@@ -92,16 +90,21 @@ freyja
 │  ├─ models
 │  ├─ routes
 │  ├─ utils
+│  ├─ views
 │  └─ vite-env.d.ts
-└─ vite.config.ts
+├─ Dockerfile
+├─ package.json
+├─ tsconfig.json
+├─ vite.config.ts
+└─ yarn.lock
 ```
 
 ## 專案技術
 
--   node.js v18.16.0
--   vite v4.4.9
+-   node.js v20.8.1
+-   vite v4.4.11
 -   express v4.18.2
--   mongoose v7.5.2
+-   mongoose v7.6.2
 -   jsonwebtoken v9.0.2
 
 # Docker

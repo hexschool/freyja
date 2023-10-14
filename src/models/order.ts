@@ -17,6 +17,7 @@ export interface IOrder extends Document {
             detail: string;
         };
     };
+    status: number;
 }
 
 const orderSchema = new Schema<IOrder>(
@@ -90,6 +91,10 @@ const orderSchema = new Schema<IOrder>(
                     required: [true, 'detail 未填寫']
                 }
             }
+        },
+        status: {
+            type: Number,
+            default: 0
         }
     },
     {

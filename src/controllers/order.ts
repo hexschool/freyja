@@ -76,7 +76,18 @@ export const updateOrderById: RequestHandler = async (req, res) => {
 };
 
 export const deleteOrderById: RequestHandler = async (req, res) => {
-    const result = OrderModel.findByIdAndRemove(req.params.id);
+    const result = await OrderModel.findByIdAndUpdate(
+        req.params.id,
+        {
+            status: -1
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    ).populate({
+        path: 'room'
+    });
     if (!result) {
         throw new Error('此訂單不存在!');
     }

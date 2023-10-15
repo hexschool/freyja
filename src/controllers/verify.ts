@@ -13,6 +13,8 @@ export const checkEmailExists: RequestHandler = async (req, res) => {
 
     res.send({
         status: true,
-        isEmailExists: Boolean(result)
+        result: {
+            isEmailExists: Boolean(result)
+        }
     });
 };

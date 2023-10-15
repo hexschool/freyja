@@ -19,33 +19,6 @@
     }
   },
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "host",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/favicon.ico": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/api/v1/user/login": {
       "post": {
         "tags": [
@@ -962,6 +935,68 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/api/v1/upload/": {
+      "post": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "上傳圖片",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "host",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/favicon.ico": {
+      "get": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     }
   }

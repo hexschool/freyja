@@ -42,3 +42,26 @@ export function verifyToken(token: string) {
         throw new Error('驗證失敗!');
     }
 }
+
+export function generateEmailToken() {
+    const code = generateRandomCode();
+
+    const token = jsonWebToken.sign({ code }, process.env.JWT_SECRET, {
+        expiresIn: 3600
+    });
+
+    return { code, token };
+}
+
+function generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    let code = '';
+
+    for (let i = 0; i < 6; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        code += characters.charAt(randomIndex);
+    }
+
+    return code;
+}

@@ -14,7 +14,7 @@ export interface IUser extends Document {
         county: string;
         city: string;
     };
-    isEmailVerification: boolean;
+    verificationToken: string;
 }
 
 const userSchema = new Schema<IUser>(
@@ -68,9 +68,10 @@ const userSchema = new Schema<IUser>(
                 required: [true, 'detail 未填寫']
             }
         },
-        isEmailVerification: {
-            type: Boolean,
-            default: false
+        verificationToken: {
+            type: String,
+            default: '',
+            select: false
         }
     },
     {

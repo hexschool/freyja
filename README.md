@@ -60,6 +60,9 @@ DATABASE_PASSWORD = DB密碼
 
 JWT_EXPIRES_DAY = token到期日
 JWT_SECRET = Token密鑰
+
+EMAILER_USER =
+EMAILER_PASSWORD =
 ```
 
 ## Swagger

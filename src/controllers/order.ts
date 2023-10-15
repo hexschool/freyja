@@ -49,8 +49,11 @@ export const createOneOrder: RequestHandler = async (req, res) => {
 export const updateOrderById: RequestHandler = async (req, res) => {
     const { roomId, checkInDate, checkOutDate, peopleNum, userInfo } = req.body;
 
-    const result = await OrderModel.findByIdAndUpdate(
-        req.params.id,
+    const result = await OrderModel.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            orderUserId: req.user?._id
+        },
         {
             roomId,
             checkInDate,
@@ -76,8 +79,11 @@ export const updateOrderById: RequestHandler = async (req, res) => {
 };
 
 export const deleteOrderById: RequestHandler = async (req, res) => {
-    const result = await OrderModel.findByIdAndUpdate(
-        req.params.id,
+    const result = await OrderModel.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            orderUserId: req.user?._id
+        },
         {
             status: -1
         },

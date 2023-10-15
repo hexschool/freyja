@@ -4,11 +4,11 @@
 
 ## 功能
 
--   Server
+-   旅館飯店 Server
 
 ## 畫面
 
-![](https://hackmd.io/_uploads/SyIIokIw2.png)
+![](https://hackmd.io/_uploads/rkEnejF-p.png)
 
 ## 安裝
 

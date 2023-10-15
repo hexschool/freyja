@@ -52,6 +52,8 @@ router.post('/forgot', UserController.forget, () => {
             required: true,
             schema: {
                 email: "timmothy.ramos@example.com",
+                code: "0Zvjde",
+                newPassword: "Dirt5528295",
             }
         }
      */

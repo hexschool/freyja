@@ -127,6 +127,14 @@
                 "email": {
                   "type": "string",
                   "example": "timmothy.ramos@example.com"
+                },
+                "code": {
+                  "type": "string",
+                  "example": "0Zvjde"
+                },
+                "newPassword": {
+                  "type": "string",
+                  "example": "Dirt5528295"
                 }
               }
             }
@@ -252,6 +260,35 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/verify/generateEmailCode": {
+      "post": {
+        "tags": [
+          "Verify - 驗證"
+        ],
+        "description": "產生信箱驗證碼",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "timmothy.ramos@example.com"
+                }
+              }
+            }
           }
         ],
         "responses": {

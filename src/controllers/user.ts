@@ -1,7 +1,7 @@
 import type { Request, RequestHandler } from 'express';
 import bcrypt from 'bcryptjs';
 import UsersModel from '@/models/user';
-import { generateToken } from '@/utils';
+import { generateToken, verifyToken } from '@/utils';
 
 export const signup: RequestHandler = async (req, res, next) => {
     const { name, email, password, phone, birthday, address } = req.body;
@@ -53,15 +53,30 @@ export const login: RequestHandler = async (req, res) => {
 };
 
 export const forget: RequestHandler = async (req, res) => {
-    const { email } = req.body;
-    const result = await UsersModel.findOne({ email });
-    if (!result) {
-        throw new Error('此 id 不存在');
+    const { email, code, newPassword } = req.body;
+
+    const user = await UsersModel.findOne({ email }).select('+verificationToken');
+    if (!user) {
+        throw new Error('忘記密碼錯誤');
     }
 
-    // TODO: 忘記密碼流程
+    const payload = verifyToken(user.verificationToken);
 
-    res.send({ status: true });
+    if (payload.code === code) {
+        await UsersModel.findByIdAndUpdate(
+            user._id,
+            {
+                password: await bcrypt.hash(newPassword, 6)
+            },
+            {
+                new: true
+            }
+        );
+    }
+
+    res.send({
+        status: true
+    });
 };
 
 export const check: RequestHandler = async (req, res) => {

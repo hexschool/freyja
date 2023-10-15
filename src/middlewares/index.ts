@@ -42,6 +42,7 @@ export const checkRequestBodyValidator: RequestHandler = (req, _res, next) => {
                 }
                 break;
             case 'password':
+            case 'newPassword':
                 if (!validator.isLength(_value, { min: 8 })) {
                     throw new Error('密碼需至少 8 碼以上');
                 }

@@ -83,8 +83,7 @@ export const check: RequestHandler = async (req, res) => {
     const token = `${req.headers.authorization?.replace('Bearer ', '')}`;
     res.send({
         status: true,
-        token,
-        result: req.user
+        token
     });
 };
 

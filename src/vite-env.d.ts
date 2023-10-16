@@ -13,8 +13,8 @@ declare global {
             JWT_EXPIRES_DAY: string;
             JWT_SECRET: string;
 
-            IMGUR_REFRESH_TOKEN: string;
-            IMGUR_ALBUM_ID: string;
+            EMAILER_USER: string;
+            EMAILER_PASSWORD: string;
         }
     }
 

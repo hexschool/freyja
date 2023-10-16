@@ -48,6 +48,8 @@ export const sendVerificationCode: RequestHandler = async (req, res) => {
     );
 
     if (user) {
+        await transporter.verify();
+
         await transporter.sendMail({
             from: process.env.EMAILER_USER,
             to: email,

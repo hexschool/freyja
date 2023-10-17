@@ -1,23 +1,24 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import * as NewController from '@/controllers/new';
+import { catchAsync } from '@/utils';
 
-const router = createRouter();
+const router = Router();
 
-router.get('/news', NewController.getNewList, () => {
+router.get('/news', catchAsync(NewController.getNewList), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "取得所有最新消息"
      */
 });
 
-router.get('/news/:id', NewController.getNewById, () => {
+router.get('/news/:id', catchAsync(NewController.getNewById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "取得單筆最新消息"
      */
 });
 
-router.post('/news', NewController.createOneNew, () => {
+router.post('/news', catchAsync(NewController.createOneNew), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "新增最新消息"
@@ -33,7 +34,7 @@ router.post('/news', NewController.createOneNew, () => {
      */
 });
 
-router.put('/news/:id', NewController.updateNewById, () => {
+router.put('/news/:id', catchAsync(NewController.updateNewById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "修改最新消息"
@@ -48,7 +49,7 @@ router.put('/news/:id', NewController.updateNewById, () => {
      */
 });
 
-router.delete('/news/:id', NewController.deleteNewById, () => {
+router.delete('/news/:id', catchAsync(NewController.deleteNewById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "刪除最新消息"

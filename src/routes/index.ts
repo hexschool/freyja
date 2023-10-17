@@ -1,4 +1,4 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import home from './api/v1/home';
 import orders from './api/v1/orders';
 import rooms from './api/v1/rooms';
@@ -7,7 +7,9 @@ import verify from './api/v1/verify';
 import healthCheck from './healthCheck';
 import swagger from './swagger';
 
-const routes = createRouter();
+const routes = Router();
+
+routes.use(healthCheck);
 
 routes.use(swagger);
 
@@ -20,7 +22,5 @@ routes.use('/api/v1/home', home);
 routes.use('/api/v1/rooms', rooms);
 
 routes.use('/api/v1/orders', orders);
-
-routes.use(healthCheck);
 
 export default routes;

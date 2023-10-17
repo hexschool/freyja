@@ -1,18 +1,23 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import * as VerifyController from '@/controllers/verify';
 import { checkRequestBodyValidator } from '@/middlewares';
+import { catchAsync } from '@/utils';
 
-const router = createRouter();
+const router = Router();
 
-router.get('/:email', VerifyController.checkEmailExists, () => {
+router.get('/:email', catchAsync(VerifyController.checkEmailExists), () => {
     /**
      * #swagger.tags = ["Verify - 驗證"]
      * #swagger.description  = "驗證信箱是否註冊過"
      */
 });
 
-router.post('/generateEmailCode', checkRequestBodyValidator, VerifyController.sendVerificationCode, () => {
-    /**
+router.post(
+    '/generateEmailCode',
+    catchAsync(checkRequestBodyValidator),
+    catchAsync(VerifyController.sendVerificationCode),
+    () => {
+        /**
      * #swagger.tags = ["Verify - 驗證"]
      * #swagger.description  = "產生信箱驗證碼"
      * #swagger.parameters['body'] = {
@@ -23,6 +28,7 @@ router.post('/generateEmailCode', checkRequestBodyValidator, VerifyController.se
             }
         }
      */
-});
+    }
+);
 
 export default router;

@@ -1,23 +1,24 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import * as CulinaryController from '@/controllers/culinary';
+import { catchAsync } from '@/utils';
 
-const router = createRouter();
+const router = Router();
 
-router.get('/culinary', CulinaryController.getCulinaryList, () => {
+router.get('/culinary', catchAsync(CulinaryController.getCulinaryList), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "取得所有美味佳餚"
      */
 });
 
-router.get('/culinary/:id', CulinaryController.getCulinaryById, () => {
+router.get('/culinary/:id', catchAsync(CulinaryController.getCulinaryById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "取得單筆美味佳餚"
      */
 });
 
-router.post('/culinary', CulinaryController.createOneCulinary, () => {
+router.post('/culinary', catchAsync(CulinaryController.createOneCulinary), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "新增美味佳餚"
@@ -34,7 +35,7 @@ router.post('/culinary', CulinaryController.createOneCulinary, () => {
      */
 });
 
-router.put('/culinary/:id', CulinaryController.updateCulinaryById, () => {
+router.put('/culinary/:id', catchAsync(CulinaryController.updateCulinaryById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "修改美味佳餚"
@@ -50,7 +51,7 @@ router.put('/culinary/:id', CulinaryController.updateCulinaryById, () => {
      */
 });
 
-router.delete('/culinary/:id', CulinaryController.deleteCulinaryById, () => {
+router.delete('/culinary/:id', catchAsync(CulinaryController.deleteCulinaryById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "刪除美味佳餚"

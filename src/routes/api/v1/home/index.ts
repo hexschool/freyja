@@ -1,8 +1,8 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import culinaryRouter from './culinary';
 import newRouter from './new';
 
-const router = createRouter();
+const router = Router();
 
 router.use(newRouter);
 

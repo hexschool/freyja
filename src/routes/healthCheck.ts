@@ -1,11 +1,8 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 
-const router = createRouter();
+const router = Router();
 
 router.get('/', (req, res) => {
-    /**
-     * #swagger.tags = ["Other - 其它"]
-     */
     const healthCheck = {
         status: true,
         message: 'OK',
@@ -17,9 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/favicon.ico', (_, res) => {
-    /**
-     * #swagger.tags = ["Other - 其它"]
-     */
     res.end();
 });
 

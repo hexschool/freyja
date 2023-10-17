@@ -1,23 +1,24 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import * as RoomController from '@/controllers/room';
+import { catchAsync } from '@/utils';
 
-const router = createRouter();
+const router = Router();
 
-router.get('/rooms', RoomController.getRoomList, () => {
+router.get('/rooms', catchAsync(RoomController.getRoomList), () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "房型列表"
      */
 });
 
-router.get('/rooms/:id', RoomController.getRoomById, () => {
+router.get('/rooms/:id', catchAsync(RoomController.getRoomById), () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "房型詳細資料"
      */
 });
 
-router.post('/rooms', RoomController.createOneRoom, () => {
+router.post('/rooms', catchAsync(RoomController.createOneRoom), () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "新增房型"
@@ -43,7 +44,7 @@ router.post('/rooms', RoomController.createOneRoom, () => {
      */
 });
 
-router.put('/rooms/:id', RoomController.updateRoomById, () => {
+router.put('/rooms/:id', catchAsync(RoomController.updateRoomById), () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "修改房型"
@@ -68,7 +69,7 @@ router.put('/rooms/:id', RoomController.updateRoomById, () => {
      */
 });
 
-router.delete('/rooms/:id', RoomController.deleteRoomById, () => {
+router.delete('/rooms/:id', catchAsync(RoomController.deleteRoomById), () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "刪除房型"

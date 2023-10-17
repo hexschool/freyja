@@ -1,26 +1,27 @@
-import { createRouter } from '@/utils';
+import { Router } from 'express';
 import * as OrderController from '@/controllers/order';
 import { checkOrder, isAuth } from '@/middlewares';
+import { catchAsync } from '@/utils';
 
-const router = createRouter();
+const router = Router();
 
-router.use(isAuth);
+router.use(catchAsync(isAuth));
 
-router.get('/orders', OrderController.getUserOrderList, () => {
+router.get('/orders', catchAsync(OrderController.getUserOrderList), () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "使用者訂單列表"
      */
 });
 
-router.get('/orders/:id', OrderController.getOrderById, () => {
+router.get('/orders/:id', catchAsync(OrderController.getOrderById), () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "訂單詳細資料"
      */
 });
 
-router.post('/orders', checkOrder, OrderController.createOneOrder, () => {
+router.post('/orders', catchAsync(checkOrder), catchAsync(OrderController.createOneOrder), () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "新增訂單"
@@ -46,7 +47,7 @@ router.post('/orders', checkOrder, OrderController.createOneOrder, () => {
      */
 });
 
-router.put('/orders/:id', checkOrder, OrderController.updateOrderById, () => {
+router.put('/orders/:id', catchAsync(checkOrder), catchAsync(OrderController.updateOrderById), () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "修改訂單"
@@ -72,7 +73,7 @@ router.put('/orders/:id', checkOrder, OrderController.updateOrderById, () => {
      */
 });
 
-router.delete('/orders/:id', OrderController.deleteOrderById, () => {
+router.delete('/orders/:id', catchAsync(OrderController.deleteOrderById), () => {
     /**
      * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "取消訂單"

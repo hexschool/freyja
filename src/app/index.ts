@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import '@/app/env';
 import '@/app/connection';
 import Routes from '@/routes';
-import Exception from '@/app/exception';
+import * as Exception from '@/app/exception';
 
 export const app = express();
 
@@ -20,6 +20,8 @@ app.use(Routes);
 
 app.use(Exception.sendNotFoundError);
 app.use(Exception.catchCustomError);
+
+Exception.catchGlobalError();
 
 if (import.meta.env.PROD) {
     app.listen(process.env.PORT);

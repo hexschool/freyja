@@ -23,7 +23,9 @@ export const checkEmailExists: RequestHandler = async (req, res) => {
 
 export const sendVerificationCode: RequestHandler = async (req, res) => {
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp-mail.outlook.com',
+        port: 587,
+        secure: false,
         auth: {
             user: process.env.EMAILER_USER,
             pass: process.env.EMAILER_PASSWORD

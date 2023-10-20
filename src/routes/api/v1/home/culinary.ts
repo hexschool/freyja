@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import * as CulinaryController from '@/controllers/culinary';
 import { catchAsync } from '@/utils';
+import { isAuth } from '@/middlewares';
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.get('/culinary/:id', catchAsync(CulinaryController.getCulinaryById), () =
      */
 });
 
-router.post('/culinary', catchAsync(CulinaryController.createOneCulinary), () => {
+router.post('/culinary', isAuth, catchAsync(CulinaryController.createOneCulinary), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "新增美味佳餚"
@@ -35,7 +36,7 @@ router.post('/culinary', catchAsync(CulinaryController.createOneCulinary), () =>
      */
 });
 
-router.put('/culinary/:id', catchAsync(CulinaryController.updateCulinaryById), () => {
+router.put('/culinary/:id', isAuth, catchAsync(CulinaryController.updateCulinaryById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "修改美味佳餚"
@@ -51,7 +52,7 @@ router.put('/culinary/:id', catchAsync(CulinaryController.updateCulinaryById), (
      */
 });
 
-router.delete('/culinary/:id', catchAsync(CulinaryController.deleteCulinaryById), () => {
+router.delete('/culinary/:id', isAuth, catchAsync(CulinaryController.deleteCulinaryById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "刪除美味佳餚"

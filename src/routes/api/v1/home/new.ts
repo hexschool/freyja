@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import * as NewController from '@/controllers/new';
 import { catchAsync } from '@/utils';
+import { isAuth } from '@/middlewares';
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.get('/news/:id', catchAsync(NewController.getNewById), () => {
      */
 });
 
-router.post('/news', catchAsync(NewController.createOneNew), () => {
+router.post('/news', isAuth, catchAsync(NewController.createOneNew), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "新增最新消息"
@@ -34,7 +35,7 @@ router.post('/news', catchAsync(NewController.createOneNew), () => {
      */
 });
 
-router.put('/news/:id', catchAsync(NewController.updateNewById), () => {
+router.put('/news/:id', isAuth, catchAsync(NewController.updateNewById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "修改最新消息"
@@ -49,7 +50,7 @@ router.put('/news/:id', catchAsync(NewController.updateNewById), () => {
      */
 });
 
-router.delete('/news/:id', catchAsync(NewController.deleteNewById), () => {
+router.delete('/news/:id', isAuth, catchAsync(NewController.deleteNewById), () => {
     /**
      * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "刪除最新消息"

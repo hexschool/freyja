@@ -9,16 +9,22 @@ export const isAuth: RequestHandler = async (req, _res, next) => {
     /**
      * #swagger.security = [{ "bearerAuth": [] }]
      */
-    const token = `${req.headers.authorization?.replace('Bearer ', '')}`;
-    const result = verifyToken(token);
+    try {
+        const token = `${req.headers.authorization?.replace('Bearer ', '')}`;
+        const result = verifyToken(token);
 
-    const user = await UsersModel.findById(result.userId);
-    if (!user) {
-        throw new Error('token 錯誤');
+        const user = await UsersModel.findById(result.userId);
+        if (!user) {
+            next(new Error('token 錯誤'));
+            return;
+        }
+
+        req.user ??= user;
+
+        next();
+    } catch (error) {
+        next(error);
     }
-    req.user ??= user;
-
-    next();
 };
 
 export const checkRequestBodyValidator: RequestHandler = (req, _res, next) => {

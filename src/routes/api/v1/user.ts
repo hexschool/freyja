@@ -60,21 +60,21 @@ router.post('/forgot', catchAsync(UserController.forget), () => {
      */
 });
 
-router.get('/check', catchAsync(isAuth), catchAsync(UserController.check), () => {
+router.get('/check', isAuth, catchAsync(UserController.check), () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "檢查是否登入"
      */
 });
 
-router.get('/', catchAsync(isAuth), catchAsync(UserController.getInfo), () => {
+router.get('/', isAuth, catchAsync(UserController.getInfo), () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "取得使用者資訊"
      */
 });
 
-router.put('/', catchAsync(isAuth), catchAsync(UserController.updateInfo), () => {
+router.put('/', isAuth, catchAsync(UserController.updateInfo), () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "更新使用者資訊"

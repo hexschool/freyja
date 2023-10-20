@@ -5,7 +5,7 @@ import { catchAsync } from '@/utils';
 
 const router = Router();
 
-router.use(catchAsync(isAuth));
+router.use(isAuth);
 
 router.get('/orders', catchAsync(OrderController.getUserOrderList), () => {
     /**

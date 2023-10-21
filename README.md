@@ -53,6 +53,8 @@ http://localhost:3005/
 ## 環境變數說明
 
 ```env
+NODE_ENV = 環境變數
+
 PORT = 3005
 
 DATABASE =  DB連結
@@ -93,21 +95,20 @@ freyja
 │  ├─ models
 │  ├─ routes
 │  ├─ utils
-│  └─ vite-env.d.ts
+│  └─ reference.d.ts
 ├─ .env.example
 ├─ .gitignore
 ├─ .prettierrc.json
 ├─ Dockerfile
 ├─ package-lock.json
 ├─ package.json
-├─ tsconfig.json
-└─ vite.config.ts
+└─ tsconfig.json
 ```
 
 ## 專案技術
 
 -   node.js v20.8.1
--   vite v4.5.0
+-   tsx v3.14.0
 -   express v4.18.2
 -   mongoose v7.6.3
 -   jsonwebtoken v9.0.2

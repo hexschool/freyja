@@ -14,8 +14,6 @@ RUN npm install
 # 建立 Swagger 文件
 RUN npm run swagger-autogen
 
-RUN npm run build
-
 # 暴露應用程式所使用的端口
 EXPOSE 3005
 

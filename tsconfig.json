@@ -3,7 +3,7 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "module": "ESNext",
-        "lib": ["ESNext", "DOM"],
+        "lib": ["ESNext"],
         "moduleResolution": "Node",
         "strict": true,
         "resolveJsonModule": true,
@@ -20,5 +20,5 @@
             "@develop/*": ["develop/*"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "__tests__/**/*.ts"]
+    "include": ["src/**/*.ts", "src/**/*.d.ts"]
 }

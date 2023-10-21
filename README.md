@@ -29,7 +29,7 @@ cd freyja
 ### 安裝套件
 
 ```bash
-yarn
+npm install
 ```
 
 ### 環境變數設定
@@ -39,7 +39,7 @@ yarn
 ### 運行專案
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### 開啟專案
@@ -70,7 +70,7 @@ EMAILER_PASSWORD =
 產生文件
 
 ```bash
-yarn swagger-autogen
+npm run swagger-autogen
 ```
 
 在瀏覽器網址列輸入以下即可看到畫面
@@ -93,21 +93,23 @@ freyja
 │  ├─ models
 │  ├─ routes
 │  ├─ utils
-│  ├─ views
 │  └─ vite-env.d.ts
+├─ .env.example
+├─ .gitignore
+├─ .prettierrc.json
 ├─ Dockerfile
+├─ package-lock.json
 ├─ package.json
 ├─ tsconfig.json
-├─ vite.config.ts
-└─ yarn.lock
+└─ vite.config.ts
 ```
 
 ## 專案技術
 
 -   node.js v20.8.1
--   vite v4.4.11
+-   vite v4.5.0
 -   express v4.18.2
--   mongoose v7.6.2
+-   mongoose v7.6.3
 -   jsonwebtoken v9.0.2
 
 # Docker

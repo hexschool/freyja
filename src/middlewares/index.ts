@@ -1,5 +1,4 @@
 import type { RequestHandler } from 'express';
-import multer from 'multer';
 import validator from 'validator';
 import RoomModel from '@/models/room';
 import UsersModel from '@/models/user';
@@ -95,22 +94,4 @@ export const checkOrder: RequestHandler = async (req, _res, next) => {
     }
 
     return next();
-};
-
-export const handleUploadFile: RequestHandler = (...args) => {
-    const instance = multer({
-        limits: {
-            fileSize: 2 * 1024 * 1024
-        },
-        fileFilter: (_req, file, callback) => {
-            // 只接受四種圖片格式
-            if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-                callback(new Error('圖片格式只接受 jpg、jpeg、png、gif'));
-                return;
-            }
-            callback(null, true);
-        }
-    });
-
-    return instance.single('image')(...args);
 };

@@ -7,7 +7,7 @@ export function catchAsync(func: RequestHandler): RequestHandler {
     };
 }
 
-export function generateToken(payload: { userId?: string; email?: string; organizationId?: string; boardId?: string }) {
+export function generateToken(payload: { userId?: string }) {
     return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_DAY
     });

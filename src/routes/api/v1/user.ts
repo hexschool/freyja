@@ -1,13 +1,12 @@
 import { Router } from 'express';
 import * as UserController from '@/controllers/user';
 import { checkRequestBodyValidator, isAuth } from '@/middlewares';
-import { catchAsync } from '@/utils';
 
 const router = Router();
 
-router.use(catchAsync(checkRequestBodyValidator));
+router.use(checkRequestBodyValidator);
 
-router.post('/login', catchAsync(UserController.login), () => {
+router.post('/login', UserController.login, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "登入"
@@ -22,7 +21,7 @@ router.post('/login', catchAsync(UserController.login), () => {
      */
 });
 
-router.post('/signup', catchAsync(UserController.signup), () => {
+router.post('/signup', UserController.signup, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "註冊"
@@ -44,7 +43,7 @@ router.post('/signup', catchAsync(UserController.signup), () => {
      */
 });
 
-router.post('/forgot', catchAsync(UserController.forget), () => {
+router.post('/forgot', UserController.forget, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "忘記密碼"
@@ -60,21 +59,21 @@ router.post('/forgot', catchAsync(UserController.forget), () => {
      */
 });
 
-router.get('/check', isAuth, catchAsync(UserController.check), () => {
+router.get('/check', isAuth, UserController.check, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "檢查是否登入"
      */
 });
 
-router.get('/', isAuth, catchAsync(UserController.getInfo), () => {
+router.get('/', isAuth, UserController.getInfo, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "取得使用者資訊"
      */
 });
 
-router.put('/', isAuth, catchAsync(UserController.updateInfo), () => {
+router.put('/', isAuth, UserController.updateInfo, () => {
     /**
      * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "更新使用者資訊"

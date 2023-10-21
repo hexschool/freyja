@@ -1,25 +1,24 @@
 import { Router } from 'express';
 import * as RoomController from '@/controllers/room';
-import { catchAsync } from '@/utils';
 import { isAuth } from '@/middlewares';
 
 const router = Router();
 
-router.get('/rooms', catchAsync(RoomController.getRoomList), () => {
+router.get('/rooms', RoomController.getRoomList, () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "房型列表"
      */
 });
 
-router.get('/rooms/:id', catchAsync(RoomController.getRoomById), () => {
+router.get('/rooms/:id', RoomController.getRoomById, () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "房型詳細資料"
      */
 });
 
-router.post('/rooms', isAuth, catchAsync(RoomController.createOneRoom), () => {
+router.post('/rooms', isAuth, RoomController.createOneRoom, () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "新增房型"
@@ -45,7 +44,7 @@ router.post('/rooms', isAuth, catchAsync(RoomController.createOneRoom), () => {
      */
 });
 
-router.put('/rooms/:id', isAuth, catchAsync(RoomController.updateRoomById), () => {
+router.put('/rooms/:id', isAuth, RoomController.updateRoomById, () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "修改房型"
@@ -70,7 +69,7 @@ router.put('/rooms/:id', isAuth, catchAsync(RoomController.updateRoomById), () =
      */
 });
 
-router.delete('/rooms/:id', isAuth, catchAsync(RoomController.deleteRoomById), () => {
+router.delete('/rooms/:id', isAuth, RoomController.deleteRoomById, () => {
     /**
      * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "刪除房型"

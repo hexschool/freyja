@@ -26,7 +26,7 @@ function getErrorMessage(err: any) {
     }
 
     // 開發模式回傳錯誤訊息
-    if (!import.meta.env.PROD) {
+    if (process.env.NODE_ENV === 'development') {
         return { message: err.message, err };
     }
 

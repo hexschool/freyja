@@ -6,7 +6,7 @@ import '@/app/connection';
 import Routes from '@/routes';
 import * as Exception from '@/app/exception';
 
-export const app = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,7 +20,6 @@ app.use(Exception.catchCustomError);
 
 Exception.catchGlobalError();
 
-if (import.meta.env.PROD) {
-    app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
     console.log(`listening on http://localhost:${process.env.PORT}`);
-}
+});

@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import { IUser } from '@/models/user';
 
 declare global {
@@ -15,6 +13,8 @@ declare global {
 
             EMAILER_USER: string;
             EMAILER_PASSWORD: string;
+
+            NODE_ENV: 'development' | 'product';
         }
     }
 

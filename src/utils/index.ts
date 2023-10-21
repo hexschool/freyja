@@ -1,13 +1,6 @@
-import { type RequestHandler } from 'express';
 import jsonWebToken, { type JwtPayload } from 'jsonwebtoken';
 
-export function catchAsync(func: RequestHandler): RequestHandler {
-    return (req, res, next) => {
-        Promise.resolve(func(req, res, next)).catch(next);
-    };
-}
-
-export function generateToken(payload: { userId?: string; email?: string; organizationId?: string; boardId?: string }) {
+export function generateToken(payload: { userId?: string }) {
     return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_DAY
     });

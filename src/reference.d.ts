@@ -14,7 +14,7 @@ declare global {
             EMAILER_USER: string;
             EMAILER_PASSWORD: string;
 
-            NODE_ENV: 'development' | 'product';
+            NODE_ENV: 'development' | 'production';
         }
     }
 

@@ -7,7 +7,7 @@ const router = Router();
 router.use('/swagger', swaggerUi.serve, (req: Request, res: Response, next: NextFunction) => {
     swaggerSpec.host = `${req.headers.host}`;
 
-    if (process.env.NODE_ENV === 'product') {
+    if (process.env.NODE_ENV === 'production') {
         swaggerSpec.schemes = ['https'];
     }
 

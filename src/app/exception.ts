@@ -10,7 +10,7 @@ export const sendNotFoundError: RequestHandler = (_req, res) => {
 export const catchCustomError: ErrorRequestHandler = (err, _req, res, _next) => {
     const message = getErrorMessage(err);
 
-    return res.status(err?.status || 500).send({
+    return res.status(err?.status || 400).send({
         ...message,
         status: false
     });

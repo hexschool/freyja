@@ -7,12 +7,11 @@ COPY . .
 
 ENV PORT=3005
 
+ENV NODE_ENV="product"
+
 # 安裝套件
 # RUN 指令用於在映像檔構建階段執行命令，並創建新的層。每個 RUN 指令都會在當前映像檔的頂部創建一個新的層並提交更改，進而形成新的映像檔。
 RUN npm install
-
-# 建立 Swagger 文件
-RUN npm run swagger-autogen
 
 # 暴露應用程式所使用的端口
 EXPOSE 3005

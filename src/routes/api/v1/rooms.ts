@@ -4,23 +4,25 @@ import { isAuth } from '@/middlewares';
 
 const router = Router();
 
-router.get('/rooms', RoomController.getRoomList, () => {
+router.get(
     /**
-     * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "房型列表"
      */
-});
+    '/rooms',
+    RoomController.getRoomList
+);
 
-router.get('/rooms/:id', RoomController.getRoomById, () => {
+router.get(
     /**
-     * #swagger.tags = ["Rooms - 房型"]
+
      * #swagger.description  = "房型詳細資料"
      */
-});
+    '/rooms/:id',
+    RoomController.getRoomById
+);
 
-router.post('/rooms', isAuth, RoomController.createOneRoom, () => {
+router.post(
     /**
-     * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "新增房型"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -42,11 +44,13 @@ router.post('/rooms', isAuth, RoomController.createOneRoom, () => {
             }
         }
      */
-});
+    '/rooms',
+    isAuth,
+    RoomController.createOneRoom
+);
 
-router.put('/rooms/:id', isAuth, RoomController.updateRoomById, () => {
+router.put(
     /**
-     * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "修改房型"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -67,13 +71,18 @@ router.put('/rooms/:id', isAuth, RoomController.updateRoomById, () => {
             }
         }
      */
-});
+    '/rooms/:id',
+    isAuth,
+    RoomController.updateRoomById
+);
 
-router.delete('/rooms/:id', isAuth, RoomController.deleteRoomById, () => {
+router.delete(
     /**
-     * #swagger.tags = ["Rooms - 房型"]
      * #swagger.description  = "刪除房型"
      */
-});
+    '/rooms/:id',
+    isAuth,
+    RoomController.deleteRoomById
+);
 
 export default router;

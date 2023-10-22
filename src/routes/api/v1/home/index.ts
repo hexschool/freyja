@@ -4,8 +4,18 @@ import newRouter from './new';
 
 const router = Router();
 
-router.use(newRouter);
+router.use(
+    /**
+     * #swagger.tags = ["Home - 首頁 - 最新消息"]
+     */
+    newRouter
+);
 
-router.use(culinaryRouter);
+router.use(
+    /**
+     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
+     */
+    culinaryRouter
+);
 
 export default router;

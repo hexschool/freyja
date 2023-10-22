@@ -4,23 +4,24 @@ import { isAuth } from '@/middlewares';
 
 const router = Router();
 
-router.get('/culinary', CulinaryController.getCulinaryList, () => {
+router.get(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "取得所有美味佳餚"
      */
-});
+    '/culinary',
+    CulinaryController.getCulinaryList
+);
 
-router.get('/culinary/:id', CulinaryController.getCulinaryById, () => {
+router.get(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "取得單筆美味佳餚"
      */
-});
+    '/culinary/:id',
+    CulinaryController.getCulinaryById
+);
 
-router.post('/culinary', isAuth, CulinaryController.createOneCulinary, () => {
+router.post(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "新增美味佳餚"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -33,11 +34,13 @@ router.post('/culinary', isAuth, CulinaryController.createOneCulinary, () => {
             }
         }
      */
-});
+    '/culinary',
+    isAuth,
+    CulinaryController.createOneCulinary
+);
 
-router.put('/culinary/:id', isAuth, CulinaryController.updateCulinaryById, () => {
+router.put(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "修改美味佳餚"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -49,13 +52,18 @@ router.put('/culinary/:id', isAuth, CulinaryController.updateCulinaryById, () =>
             }
         }
      */
-});
+    '/culinary/:id',
+    isAuth,
+    CulinaryController.updateCulinaryById
+);
 
-router.delete('/culinary/:id', isAuth, CulinaryController.deleteCulinaryById, () => {
+router.delete(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
      * #swagger.description  = "刪除美味佳餚"
      */
-});
+    '/culinary/:id',
+    isAuth,
+    CulinaryController.deleteCulinaryById
+);
 
 export default router;

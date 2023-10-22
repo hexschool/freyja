@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "tsx watch src/app/index.ts",
         "start": "tsx src/app/index.ts",
-        "swagger-autogen": "node ./develop/swagger.js",
+        "swagger-autogen": "tsx develop/swagger.ts",
         "postinstall": "npm run swagger-autogen"
     },
     "devDependencies": {

@@ -6,23 +6,24 @@ const router = Router();
 
 router.use(isAuth);
 
-router.get('/orders', OrderController.getUserOrderList, () => {
+router.get(
     /**
-     * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "使用者訂單列表"
      */
-});
+    '/orders',
+    OrderController.getUserOrderList
+);
 
-router.get('/orders/:id', OrderController.getOrderById, () => {
+router.get(
     /**
-     * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "訂單詳細資料"
      */
-});
+    '/orders/:id',
+    OrderController.getOrderById
+);
 
-router.post('/orders', checkOrder, OrderController.createOneOrder, () => {
+router.post(
     /**
-     * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "新增訂單"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -44,11 +45,13 @@ router.post('/orders', checkOrder, OrderController.createOneOrder, () => {
             }
         }
      */
-});
+    '/orders',
+    checkOrder,
+    OrderController.createOneOrder
+);
 
-router.put('/orders/:id', checkOrder, OrderController.updateOrderById, () => {
+router.put(
     /**
-     * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "修改訂單"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -70,13 +73,17 @@ router.put('/orders/:id', checkOrder, OrderController.updateOrderById, () => {
             }
         }
      */
-});
+    '/orders/:id',
+    checkOrder,
+    OrderController.updateOrderById
+);
 
-router.delete('/orders/:id', OrderController.deleteOrderById, () => {
+router.delete(
     /**
-     * #swagger.tags = ["Orders - 訂單"]
      * #swagger.description  = "取消訂單"
      */
-});
+    '/orders/:id',
+    OrderController.deleteOrderById
+);
 
 export default router;

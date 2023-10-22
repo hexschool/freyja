@@ -6,9 +6,8 @@ const router = Router();
 
 router.use(checkRequestBodyValidator);
 
-router.post('/login', UserController.login, () => {
+router.post(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "登入"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -19,11 +18,12 @@ router.post('/login', UserController.login, () => {
             }
         }
      */
-});
+    '/login',
+    UserController.login
+);
 
-router.post('/signup', UserController.signup, () => {
+router.post(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "註冊"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -41,11 +41,12 @@ router.post('/signup', UserController.signup, () => {
             }
         }
      */
-});
+    '/signup',
+    UserController.signup
+);
 
-router.post('/forgot', UserController.forget, () => {
+router.post(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "忘記密碼"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -57,25 +58,30 @@ router.post('/forgot', UserController.forget, () => {
             }
         }
      */
-});
+    '/forgot',
+    UserController.forget
+);
 
-router.get('/check', isAuth, UserController.check, () => {
+router.get(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "檢查是否登入"
      */
-});
+    '/check',
+    isAuth,
+    UserController.check
+);
 
-router.get('/', isAuth, UserController.getInfo, () => {
+router.get(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "取得使用者資訊"
      */
-});
+    '/',
+    isAuth,
+    UserController.getInfo
+);
 
-router.put('/', isAuth, UserController.updateInfo, () => {
+router.put(
     /**
-     * #swagger.tags = ["Users - 使用者"]
      * #swagger.description  = "更新使用者資訊"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -94,6 +100,9 @@ router.put('/', isAuth, UserController.updateInfo, () => {
             }
         }
      */
-});
+    '/',
+    isAuth,
+    UserController.updateInfo
+);
 
 export default router;

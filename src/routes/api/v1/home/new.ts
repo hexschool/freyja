@@ -4,23 +4,24 @@ import { isAuth } from '@/middlewares';
 
 const router = Router();
 
-router.get('/news', NewController.getNewList, () => {
+router.get(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "取得所有最新消息"
      */
-});
+    '/news',
+    NewController.getNewList
+);
 
-router.get('/news/:id', NewController.getNewById, () => {
+router.get(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "取得單筆最新消息"
      */
-});
+    '/news/:id',
+    NewController.getNewById
+);
 
-router.post('/news', isAuth, NewController.createOneNew, () => {
+router.post(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "新增最新消息"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -32,11 +33,13 @@ router.post('/news', isAuth, NewController.createOneNew, () => {
             }
         }
      */
-});
+    '/news',
+    isAuth,
+    NewController.createOneNew
+);
 
-router.put('/news/:id', isAuth, NewController.updateNewById, () => {
+router.put(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "修改最新消息"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -47,13 +50,18 @@ router.put('/news/:id', isAuth, NewController.updateNewById, () => {
             }
         }
      */
-});
+    '/news/:id',
+    isAuth,
+    NewController.updateNewById
+);
 
-router.delete('/news/:id', isAuth, NewController.deleteNewById, () => {
+router.delete(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
      * #swagger.description  = "刪除最新消息"
      */
-});
+    '/news/:id',
+    isAuth,
+    NewController.deleteNewById
+);
 
 export default router;

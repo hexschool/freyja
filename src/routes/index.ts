@@ -9,18 +9,47 @@ import swagger from './swagger';
 
 const routes = Router();
 
-routes.use(healthCheck);
-
 routes.use(swagger);
 
-routes.use('/api/v1/user', user);
+routes.use(
+    /**
+     * #swagger.ignore = true
+     */
+    healthCheck
+);
 
-routes.use('/api/v1/verify', verify);
+routes.use(
+    /**
+     * #swagger.tags = ["Users - 使用者"]
+     */
+    '/api/v1/user',
+    user
+);
+
+routes.use(
+    /**
+     * #swagger.tags = ["Verify - 驗證"]
+     */
+    '/api/v1/verify',
+    verify
+);
 
 routes.use('/api/v1/home', home);
 
-routes.use('/api/v1/rooms', rooms);
+routes.use(
+    /**
+     * #swagger.tags = ["Rooms - 房型"]
+     */
+    '/api/v1/rooms',
+    rooms
+);
 
-routes.use('/api/v1/orders', orders);
+routes.use(
+    /**
+     * #swagger.tags = ["Orders - 訂單"]
+     */
+    '/api/v1/orders',
+    orders
+);
 
 export default routes;

@@ -4,16 +4,16 @@ import { checkRequestBodyValidator } from '@/middlewares';
 
 const router = Router();
 
-router.get('/:email', VerifyController.checkEmailExists, () => {
+router.get(
     /**
-     * #swagger.tags = ["Verify - 驗證"]
      * #swagger.description  = "驗證信箱是否註冊過"
      */
-});
+    '/:email',
+    VerifyController.checkEmailExists
+);
 
-router.post('/generateEmailCode', checkRequestBodyValidator, VerifyController.sendVerificationCode, () => {
+router.post(
     /**
-     * #swagger.tags = ["Verify - 驗證"]
      * #swagger.description  = "產生信箱驗證碼"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -23,6 +23,9 @@ router.post('/generateEmailCode', checkRequestBodyValidator, VerifyController.se
             }
         }
      */
-});
+    '/generateEmailCode',
+    checkRequestBodyValidator,
+    VerifyController.sendVerificationCode
+);
 
 export default router;

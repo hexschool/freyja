@@ -4,11 +4,18 @@ import { checkRequestBodyValidator } from '@/middlewares';
 
 const router = Router();
 
-router.get(
+router.post(
     /**
      * #swagger.description  = "驗證信箱是否註冊過"
+     * #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                email: "timmothy.ramos@example.com",
+            }
+        }
      */
-    '/:email',
+    '/email',
     VerifyController.checkEmailExists
 );
 

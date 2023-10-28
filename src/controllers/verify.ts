@@ -6,7 +6,7 @@ import { generateEmailToken } from '@/utils';
 
 export const checkEmailExists: RequestHandler = async (req, res, next) => {
     try {
-        const { email } = req.params;
+        const email = req.body.email;
 
         if (!validator.isEmail(email)) {
             throw new Error('Email 格式不正確');

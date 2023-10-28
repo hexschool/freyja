@@ -109,6 +109,8 @@ npm run swagger-autogen
 http://localhost:3005/swagger
 ```
 
+-   參考資料 : [使用 Swagger 自動生成 API 文件](https://israynotarray.com/nodejs/20201229/1974873838/)
+
 ## 資料夾說明
 
 ```

@@ -27,14 +27,6 @@ export const checkEmailExists: RequestHandler = async (req, res, next) => {
 
 export const sendVerificationCode: RequestHandler = async (req, res, next) => {
     try {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAILER_USER,
-                pass: process.env.EMAILER_PASSWORD
-            }
-        });
-
         const email = req.body.email;
         const { code, token } = generateEmailToken();
 
@@ -51,7 +43,7 @@ export const sendVerificationCode: RequestHandler = async (req, res, next) => {
         );
 
         if (user) {
-            await transporter.verify();
+            const transporter = await getTransporter();
 
             await transporter.sendMail({
                 from: process.env.EMAILER_USER,
@@ -67,4 +59,24 @@ export const sendVerificationCode: RequestHandler = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+};
+
+const getTransporter = async () => {
+    const { EMAILER_USER, EMAILER_PASSWORD } = process.env;
+
+    if (!EMAILER_USER || !EMAILER_PASSWORD) {
+        throw new Error('Email 服務未啟用');
+    }
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: EMAILER_USER,
+            pass: EMAILER_PASSWORD
+        }
+    });
+
+    await transporter.verify();
+
+    return transporter;
 };

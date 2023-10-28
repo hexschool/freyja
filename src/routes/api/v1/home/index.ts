@@ -6,14 +6,14 @@ const router = Router();
 
 router.use(
     /**
-     * #swagger.tags = ["Home - 首頁 - 最新消息"]
+     * #swagger.tags = ["Home - 首頁"]
      */
     newRouter
 );
 
 router.use(
     /**
-     * #swagger.tags = ["Home - 首頁 - 美味佳餚"]
+     * #swagger.tags = ["Home - 首頁"]
      */
     culinaryRouter
 );

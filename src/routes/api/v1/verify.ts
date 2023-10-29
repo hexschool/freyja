@@ -14,6 +14,20 @@ router.post(
                 email: "timmothy.ramos@example.com",
             }
         }
+     * #swagger.responses[200] = {
+            schema: {
+                "status": true,
+                "result": {
+                    "isEmailExists": true
+                }
+            }
+        }
+     * #swagger.responses[400] = {
+            schema: {
+                "status": false,
+                "message": "Email 格式不正確",
+            }
+        }
      */
     '/email',
     VerifyController.checkEmailExists
@@ -27,6 +41,17 @@ router.post(
             required: true,
             schema: {
                 email: "timmothy.ramos@example.com",
+            }
+        }
+     * #swagger.responses[200] = {
+            schema: {
+                "status": true,
+            }
+        }
+     * #swagger.responses[400] = {
+            schema: {
+                "status": false,
+                "message": "Email 格式不正確",
             }
         }
      */

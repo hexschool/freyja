@@ -10,21 +10,21 @@ router.use(isAuth);
 
 router.use(
     /**
-     * #swagger.tags = ["Admin - 管理員"]
+     * #swagger.tags = ['Admin/News - 最新消息管理']
      */
     newRouter
 );
 
 router.use(
     /**
-     * #swagger.tags = ["Admin - 管理員"]
+     * #swagger.tags = ['Admin/Culinary - 美味佳餚管理']
      */
     culinaryRouter
 );
 
 router.use(
     /**
-     * #swagger.tags = ["Admin - 管理員"]
+     * #swagger.tags = ['Admin/Rooms - 房型管理']
      */
     roomsRouter
 );

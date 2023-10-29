@@ -1,4 +1,5 @@
 import type { RequestHandler } from 'express';
+import createHttpError from 'http-errors';
 import RoomModel from '@/models/room';
 
 export const getRoomList: RequestHandler = async (_req, res, next) => {
@@ -18,7 +19,7 @@ export const getRoomById: RequestHandler = async (req, res, next) => {
     try {
         const result = await RoomModel.findById(req.params.id);
         if (!result) {
-            throw new Error('此房型不存在!');
+            throw createHttpError(404, '此房型不存在');
         }
 
         res.send({
@@ -78,7 +79,7 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
             }
         );
         if (!result) {
-            throw new Error('此房型不存在!');
+            throw createHttpError(404, '此房型不存在');
         }
 
         res.send({
@@ -94,7 +95,7 @@ export const deleteRoomById: RequestHandler = async (req, res, next) => {
     try {
         const result = await RoomModel.findByIdAndRemove(req.params.id);
         if (!result) {
-            throw new Error('此房型不存在!');
+            throw createHttpError(404, '此房型不存在');
         }
 
         res.send({

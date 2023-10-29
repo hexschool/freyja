@@ -17,6 +17,42 @@ router.post(
                 password: "Dirt5528295",
             }
         }
+     * #swagger.responses[200] = {
+            description: '登入成功',
+            schema: {
+                "status": true,
+                "token": "eyJhbGciOiJI....",
+                "result": {
+                    "address": {
+                        "zipcode": 802,
+                        "detail": "文山路23號",
+                        "county": "高雄市",
+                        "city": "苓雅區"
+                    },
+                    "_id": "6533f0ef4cdf5b7f762747b0",
+                    "name": "Lori Murphy",
+                    "email": "timmothy.ramos@example.com",
+                    "phone": "(663) 742-3828",
+                    "birthday": "1982-02-03T16:00:00.000Z",
+                    "createdAt": "2023-10-21T15:40:31.526Z",
+                    "updatedAt": "2023-10-21T15:40:31.526Z",
+                    "id": "6533f0ef4cdf5b7f762747b0"
+                }
+            }
+        }
+     * #swagger.responses[400] = {
+            description: '登入失敗',
+            schema: {
+                "status": false,
+                "message": "密碼錯誤",
+            }
+        }
+     * #swagger.responses[404] = {
+            schema: {
+                "status": false,
+                "message": "此使用者不存在",
+            }
+        }
      */
     '/login',
     UserController.login
@@ -40,6 +76,36 @@ router.post(
                 },
             }
         }
+     * #swagger.responses[200] = {
+            description: '註冊成功',
+            schema: {
+                "status": true,
+                "token": "eyJhbGciOiJI....",
+                "result": {
+                    "address": {
+                        "zipcode": 802,
+                        "detail": "文山路23號",
+                        "county": "高雄市",
+                        "city": "苓雅區"
+                    },
+                    "_id": "6533f0ef4cdf5b7f762747b0",
+                    "name": "Lori Murphy",
+                    "email": "timmothy.ramos@example.com",
+                    "phone": "(663) 742-3828",
+                    "birthday": "1982-02-03T16:00:00.000Z",
+                    "createdAt": "2023-10-21T15:40:31.526Z",
+                    "updatedAt": "2023-10-21T15:40:31.526Z",
+                    "id": "6533f0ef4cdf5b7f762747b0"
+                }
+            }
+        }
+     * #swagger.responses[400] = {
+            description: '註冊失敗',
+            schema: {
+                "status": false,
+                "message": "此 Email 已註冊",
+            }
+        }
      */
     '/signup',
     UserController.signup
@@ -57,6 +123,17 @@ router.post(
                 newPassword: "Dirt5528295",
             }
         }
+     * #swagger.responses[200] = {
+            schema: {
+                "status": true,
+            }
+        }
+     * #swagger.responses[404] = {
+            schema: {
+                "status": false,
+                "message": "此使用者不存在",
+            }
+        }
      */
     '/forgot',
     UserController.forget
@@ -65,6 +142,13 @@ router.post(
 router.get(
     /**
      * #swagger.description  = "檢查是否登入"
+     * #swagger.responses[200] = {
+            description: '登入成功',
+            schema: {
+                "status": true,
+                "token": "eyJhbGciOiJI....",
+            }
+        }
      */
     '/check',
     isAuth,
@@ -74,6 +158,28 @@ router.get(
 router.get(
     /**
      * #swagger.description  = "取得使用者資訊"
+     * #swagger.responses[200] = {
+            schema: {
+                "status": true,
+                "token": "eyJhbGciOiJI....",
+                "result": {
+                    "address": {
+                        "zipcode": 802,
+                        "detail": "文山路23號",
+                        "county": "高雄市",
+                        "city": "苓雅區"
+                    },
+                    "_id": "6533f0ef4cdf5b7f762747b0",
+                    "name": "Lori Murphy",
+                    "email": "timmothy.ramos@example.com",
+                    "phone": "(663) 742-3828",
+                    "birthday": "1982-02-03T16:00:00.000Z",
+                    "createdAt": "2023-10-21T15:40:31.526Z",
+                    "updatedAt": "2023-10-21T15:40:31.526Z",
+                    "id": "6533f0ef4cdf5b7f762747b0"
+                }
+            }
+        }
      */
     '/',
     isAuth,
@@ -97,6 +203,18 @@ router.put(
                 },
                 oldPassword: "舊密碼",
                 newPassword: "新密碼",
+            }
+        }
+     * #swagger.responses[400] = {
+            schema: {
+                "status": false,
+                "message": "密碼錯誤",
+            }
+        }
+     * #swagger.responses[404] = {
+            schema: {
+                "status": false,
+                "message": "此使用者不存在",
             }
         }
      */

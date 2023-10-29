@@ -5,8 +5,9 @@
     "type": "module",
     "scripts": {
         "dev": "tsx watch src/app/index.ts",
-        "start": "tsx src/app/index.ts",
-        "swagger-autogen": "tsx develop/swagger.ts",
+        "build": "tsc && node develop/build.js",
+        "start": "node dist/index.js",
+        "swagger-autogen": "node develop/swagger.js",
         "postinstall": "npm run swagger-autogen"
     },
     "devDependencies": {
@@ -19,6 +20,7 @@
         "@types/nodemailer": "^6.4.13",
         "@types/swagger-ui-express": "^4.1.5",
         "@types/validator": "^13.11.5",
+        "esbuild": "0.19.5",
         "swagger-autogen": "^2.23.7",
         "tsx": "^3.14.0",
         "typescript": "^5.2.2"

@@ -53,7 +53,7 @@ npm install
 ### 環境變數範例與說明 :
 
 ```bash
-# 環境變數，區分開發環境或生產環境(development、production)
+# 環境變數，區分開發環境或正式環境(development、production)
 NODE_ENV = "development"
 
 # 伺服器埠號
@@ -116,7 +116,8 @@ http://localhost:3005/swagger
 ```
 freyja
 ├─ develop                  // 開發工具、腳本
-│  ├─ swagger.ts
+│  ├─ build.js
+│  ├─ swagger.js
 │  └─ swagger_output.json
 ├─ src
 │  ├─ app                   // 入口點
@@ -137,8 +138,9 @@ freyja
 
 ## 專案技術
 
--   node.js v20.8.1
+-   node.js v20.8.9
 -   tsx v3.14.0
+-   esbuild v0.19.5
 -   express v4.18.2
 -   mongoose v7.6.3
 -   jsonwebtoken v9.0.2
@@ -149,7 +151,10 @@ freyja
 # 開發指令 : 使用 tsx watch 來監聽檔案變化，並且自動編譯成 js 檔案，適用於開發環境
 npm run dev
 
-# 啟動指令 : 使用 tsx 來啟動專案，適用於正式環境
+# 打包指令 : 使用 esbuild 來編譯、打包專案，適用於正式環境
+npm run build
+
+# 啟動指令 : 使用 node 來啟動專案，適用於正式環境
 npm run start
 
 # 產生 Swagger 文件指令 : 用來產生 Swagger 文件

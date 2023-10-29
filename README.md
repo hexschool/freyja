@@ -15,10 +15,10 @@
 ## API 串接範例
 
 ```js
-fetch('http://localhost:3005/api/v1/user/check', { method: 'GET' })
+fetch('http://localhost:3005/api/v1/home/news', { method: 'GET' })
     .then(response => response.json())
     .then(res => {
-        // { status: 'success', message: '驗證成功' }
+        // { status: 'true', result: [{...}] }
         console.log(res);
     });
 ```
@@ -200,7 +200,7 @@ docker run -p 3005:3005 -d freyja:v1
     ![Configure account](https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2Fother%2Fheroku-to-render%2F%E6%88%AA%E5%9C%96%202022-12-13%2010.47.49.png?alt=media&token=9a0c3f6a-aa03-4bf8-abc2-27c6419e0ec8)
     ![Configure account](https://firebasestorage.googleapis.com/v0/b/welcomewebworld-4097b.appspot.com/o/blogImg%2Fother%2Fheroku-to-render%2FInstalled_GitHub_App_-_Render.jpg?alt=media&token=7650194e-c74f-4920-9343-f70fba0b7124)
 
-4. 主機設定，建議選擇 Docker 做為佈署環境，相關設定以撰寫於 Dockerfile
+4. 主機設定，建議選擇 Docker 做為佈署環境，相關設定已撰寫於 Dockerfile
 
     ![Dockerfile](https://i.imgur.com/QdjHB8g.png)
 

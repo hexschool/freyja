@@ -1,4 +1,5 @@
 import type { RequestHandler } from 'express';
+import createHttpError from 'http-errors';
 import validator from 'validator';
 import RoomModel from '@/models/room';
 import UsersModel from '@/models/user';
@@ -8,6 +9,13 @@ import { verifyToken } from '@/utils';
 export const isAuth: RequestHandler = async (req, _res, next) => {
     /**
      * #swagger.security = [{ "bearerAuth": [] }]
+     * #swagger.responses[403] = {
+            description: '重新登入',
+            schema: {
+                "status": false,
+                "message": "請重新登入",
+            }
+        }
      */
     try {
         const token = `${req.headers.authorization?.replace('Bearer ', '')}`;
@@ -15,7 +23,7 @@ export const isAuth: RequestHandler = async (req, _res, next) => {
 
         const user = await UsersModel.findById(result.userId);
         if (!user) {
-            throw new Error('token 錯誤');
+            throw createHttpError(404, '此使用者不存在');
         }
 
         req.user ??= user;
@@ -84,23 +92,23 @@ export const checkOrder: RequestHandler = async (req, _res, next) => {
         const roomInfo = await RoomModel.findById(roomId);
 
         if (!roomInfo) {
-            throw new Error('此房型不存在!');
+            throw createHttpError(404, '此房型不存在');
         }
 
         if (peopleNum > roomInfo.maxPeople) {
-            throw new Error('peopleNum 錯誤!');
+            throw new Error('peopleNum 錯誤');
         }
 
         if (!validator.isDate(checkInDate)) {
-            throw new Error('checkInDate 格式錯誤!');
+            throw new Error('checkInDate 格式錯誤');
         }
 
         if (!validator.isDate(checkOutDate)) {
-            throw new Error('checkOutDate 格式錯誤!');
+            throw new Error('checkOutDate 格式錯誤');
         }
 
         if (new Date(checkInDate) > new Date(checkOutDate)) {
-            throw new Error('checkInDate 錯誤!');
+            throw new Error('checkInDate 錯誤');
         }
 
         next();

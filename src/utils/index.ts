@@ -1,3 +1,4 @@
+import createHttpError from 'http-errors';
 import jsonWebToken, { type JwtPayload } from 'jsonwebtoken';
 
 export const generateToken = (payload: { userId?: string }) => {
@@ -10,7 +11,7 @@ export const verifyToken = (token: string) => {
     try {
         return jsonWebToken.verify(token, process.env.JWT_SECRET) as JwtPayload;
     } catch (error) {
-        throw new Error('驗證失敗!');
+        throw createHttpError(403, '請重新登入');
     }
 };
 

@@ -1,5 +1,6 @@
 import type { Request, RequestHandler } from 'express';
 import bcrypt from 'bcryptjs';
+import createHttpError from 'http-errors';
 import UsersModel from '@/models/user';
 import { generateToken, verifyToken } from '@/utils';
 
@@ -9,7 +10,7 @@ export const signup: RequestHandler = async (req, res, next) => {
 
         const checkEmail = await UsersModel.findOne({ email });
         if (checkEmail) {
-            throw new Error('此 Email 已被註冊!');
+            throw createHttpError(400, '此 Email 已註冊');
         }
 
         const _result = await UsersModel.create({
@@ -38,12 +39,12 @@ export const login: RequestHandler = async (req, res, next) => {
 
         const user = await UsersModel.findOne({ email }).select('+password');
         if (!user) {
-            throw new Error('此 Email 不存在!');
+            throw createHttpError(404, '此使用者不存在');
         }
 
         const checkPassword = await bcrypt.compare(password, user.password);
         if (!checkPassword) {
-            throw new Error('密碼錯誤!');
+            throw createHttpError(400, '密碼錯誤');
         }
 
         const { password: _, ...result } = user.toObject();
@@ -64,7 +65,7 @@ export const forget: RequestHandler = async (req, res, next) => {
 
         const user = await UsersModel.findOne({ email }).select('+verificationToken');
         if (!user) {
-            throw new Error('忘記密碼錯誤');
+            throw createHttpError(404, '此使用者不存在');
         }
 
         const payload = verifyToken(user.verificationToken);
@@ -142,12 +143,12 @@ const updateUserPassword = async (req: Request) => {
 
     const user = await UsersModel.findById(userId).select('+password');
     if (!user) {
-        throw new Error('此使用者不存在!');
+        throw createHttpError(404, '此使用者不存在');
     }
 
     const checkPassword = await bcrypt.compare(oldPassword, user.password);
     if (!checkPassword) {
-        throw new Error('密碼錯誤!');
+        throw createHttpError(400, '密碼錯誤');
     }
 
     const result = await UsersModel.findByIdAndUpdate(

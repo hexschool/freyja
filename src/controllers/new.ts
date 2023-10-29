@@ -1,4 +1,5 @@
 import type { RequestHandler } from 'express';
+import createHttpError from 'http-errors';
 import NewsModel from '@/models/new';
 
 export const getNewList: RequestHandler = async (_req, res, next) => {
@@ -18,7 +19,7 @@ export const getNewById: RequestHandler = async (req, res, next) => {
     try {
         const result = await NewsModel.findById(req.params.id);
         if (!result) {
-            throw new Error('此最新消息不存在!');
+            throw createHttpError(404, '此最新消息不存在');
         }
 
         res.send({
@@ -66,7 +67,7 @@ export const updateNewById: RequestHandler = async (req, res, next) => {
             }
         );
         if (!result) {
-            throw new Error('此最新消息不存在!');
+            throw createHttpError(404, '此最新消息不存在');
         }
 
         res.send({
@@ -82,7 +83,7 @@ export const deleteNewById: RequestHandler = async (req, res, next) => {
     try {
         const result = await NewsModel.findByIdAndRemove(req.params.id);
         if (!result) {
-            throw new Error('此最新消息不存在!');
+            throw createHttpError(404, '此最新消息不存在');
         }
 
         res.send({

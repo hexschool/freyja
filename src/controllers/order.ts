@@ -1,4 +1,5 @@
 import type { RequestHandler } from 'express';
+import createHttpError from 'http-errors';
 import OrderModel from '@/models/order';
 
 export const getUserOrderList: RequestHandler = async (req, res, next) => {
@@ -24,7 +25,7 @@ export const getOrderById: RequestHandler = async (req, res, next) => {
             path: 'roomId'
         });
         if (!result) {
-            throw new Error('此訂單不存在!');
+            throw createHttpError(404, '此訂單不存在');
         }
 
         res.send({
@@ -82,7 +83,7 @@ export const updateOrderById: RequestHandler = async (req, res, next) => {
             path: 'roomId'
         });
         if (!result) {
-            throw new Error('此訂單不存在!');
+            throw createHttpError(404, '此訂單不存在');
         }
 
         res.send({
@@ -112,7 +113,7 @@ export const deleteOrderById: RequestHandler = async (req, res, next) => {
             path: 'roomId'
         });
         if (!result) {
-            throw new Error('此訂單不存在!');
+            throw createHttpError(404, '此訂單不存在');
         }
 
         res.send({

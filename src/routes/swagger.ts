@@ -11,7 +11,11 @@ router.use('/swagger', swaggerUi.serve, (req: Request, res: Response, next: Next
         swaggerSpec.schemes = ['https'];
     }
 
-    const requestHandler = swaggerUi.setup(swaggerSpec);
+    const opts = {
+        customfavIcon: '/public/favicon.ico'
+    };
+
+    const requestHandler = swaggerUi.setup(swaggerSpec, opts);
 
     requestHandler(req, res, next);
 });

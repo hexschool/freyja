@@ -22,7 +22,7 @@ router.get(
             }
         }
      */
-    '/news',
+    '/',
     NewController.getNewList
 );
 
@@ -49,7 +49,7 @@ router.get(
             }
         }
      */
-    '/news/:id',
+    '/:id',
     NewController.getNewById
 );
 

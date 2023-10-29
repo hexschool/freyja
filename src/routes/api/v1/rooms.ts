@@ -32,7 +32,7 @@ router.get(
             }
         }
      */
-    '/rooms',
+    '/',
     RoomController.getRoomList
 );
 
@@ -69,7 +69,7 @@ router.get(
             }
         }
      */
-    '/rooms/:id',
+    '/:id',
     RoomController.getRoomById
 );
 

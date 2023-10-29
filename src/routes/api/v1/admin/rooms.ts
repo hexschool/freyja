@@ -55,7 +55,7 @@ router.post(
             }
         }
      */
-    '/rooms',
+    '/',
     RoomController.createOneRoom
 );
 
@@ -116,7 +116,7 @@ router.put(
             }
         }
      */
-    '/rooms/:id',
+    '/:id',
     RoomController.updateRoomById
 );
 
@@ -153,7 +153,7 @@ router.delete(
             }
         }
      */
-    '/rooms/:id',
+    '/:id',
     RoomController.deleteRoomById
 );
 

@@ -41,7 +41,7 @@ routes.use(
     /**
      * #swagger.tags = ["Rooms - 房型"]
      */
-    '/api/v1',
+    '/api/v1/rooms',
     rooms
 );
 
@@ -49,7 +49,7 @@ routes.use(
     /**
      * #swagger.tags = ["Orders - 訂單"]
      */
-    '/api/v1',
+    '/api/v1/orders',
     orders
 );
 

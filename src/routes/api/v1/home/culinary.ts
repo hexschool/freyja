@@ -23,7 +23,7 @@ router.get(
             }
         }
      */
-    '/culinary',
+    '/',
     CulinaryController.getCulinaryList
 );
 
@@ -51,7 +51,7 @@ router.get(
             }
         }
      */
-    '/culinary/:id',
+    '/:id',
     CulinaryController.getCulinaryById
 );
 

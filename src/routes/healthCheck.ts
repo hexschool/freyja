@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import express, { Router } from 'express';
 
 const router = Router();
 
@@ -13,8 +13,6 @@ router.get('/', (req, res) => {
     res.send(healthCheck);
 });
 
-router.get('/favicon.ico', (_, res) => {
-    res.end();
-});
+router.use('/favicon.ico', express.static('public/favicon.ico'));
 
 export default router;

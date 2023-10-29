@@ -126,6 +126,7 @@ freyja
 │  ├─ build.js              // 使用 esbuild 來編譯、打包專案
 │  ├─ swagger.js            // 產生 Swagger 文件
 │  └─ swagger_output.json   // Swagger 文件，會由 swagger.js 產生
+├─ public                   // 靜態資源放置處
 ├─ src
 │  ├─ app                   // 入口點
 │  ├─ controllers           // 控制器

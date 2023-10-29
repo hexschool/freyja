@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan('dev'));
 
+app.use('/public', express.static('public'));
+
 app.use(Routes);
 
 app.use(Exception.sendNotFoundError);

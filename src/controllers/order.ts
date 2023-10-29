@@ -79,7 +79,7 @@ export const updateOrderById: RequestHandler = async (req, res, next) => {
                 runValidators: true
             }
         ).populate({
-            path: 'room'
+            path: 'roomId'
         });
         if (!result) {
             throw new Error('此訂單不存在!');
@@ -109,7 +109,7 @@ export const deleteOrderById: RequestHandler = async (req, res, next) => {
                 runValidators: true
             }
         ).populate({
-            path: 'room'
+            path: 'roomId'
         });
         if (!result) {
             throw new Error('此訂單不存在!');

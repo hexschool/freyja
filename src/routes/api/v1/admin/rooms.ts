@@ -5,6 +5,7 @@ const router = Router();
 
 router.post(
     /**
+     * #swagger.tags = ['Admin/Rooms - 房型管理']
      * #swagger.description  = "新增房型"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -32,6 +33,7 @@ router.post(
 
 router.put(
     /**
+     * #swagger.tags = ['Admin/Rooms - 房型管理']
      * #swagger.description  = "修改房型"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -58,6 +60,7 @@ router.put(
 
 router.delete(
     /**
+     * #swagger.tags = ['Admin/Rooms - 房型管理']
      * #swagger.description  = "刪除房型"
      */
     '/rooms/:id',

@@ -5,6 +5,7 @@ const router = Router();
 
 router.post(
     /**
+     * #swagger.tags = ['Admin/News - 最新消息管理']
      * #swagger.description  = "新增最新消息"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -22,6 +23,7 @@ router.post(
 
 router.put(
     /**
+     * #swagger.tags = ['Admin/News - 最新消息管理']
      * #swagger.description  = "修改最新消息"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -38,6 +40,7 @@ router.put(
 
 router.delete(
     /**
+     * #swagger.tags = ['Admin/News - 最新消息管理']
      * #swagger.description  = "刪除最新消息"
      */
     '/news/:id',

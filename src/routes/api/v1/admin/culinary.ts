@@ -5,7 +5,6 @@ const router = Router();
 
 router.post(
     /**
-     * #swagger.tags = ['Admin/Culinary - 美味佳餚管理']
      * #swagger.description  = "新增美味佳餚"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -24,7 +23,6 @@ router.post(
 
 router.put(
     /**
-     * #swagger.tags = ['Admin/Culinary - 美味佳餚管理']
      * #swagger.description  = "修改美味佳餚"
      * #swagger.parameters['body'] = {
             in: 'body',
@@ -42,7 +40,6 @@ router.put(
 
 router.delete(
     /**
-     * #swagger.tags = ['Admin/Culinary - 美味佳餚管理']
      * #swagger.description  = "刪除美味佳餚"
      */
     '/culinary/:id',

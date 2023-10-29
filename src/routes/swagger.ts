@@ -12,7 +12,8 @@ router.use('/swagger', swaggerUi.serve, (req: Request, res: Response, next: Next
     }
 
     const opts = {
-        customfavIcon: '/public/favicon.ico'
+        customfavIcon: '/public/favicon.ico',
+        customSiteTitle: swaggerSpec?.info?.title
     };
 
     const requestHandler = swaggerUi.setup(swaggerSpec, opts);

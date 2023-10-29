@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import culinaryRouter from './culinary';
-import newsRouter from './new';
+import newsRouter from './news';
 
 const router = Router();
 

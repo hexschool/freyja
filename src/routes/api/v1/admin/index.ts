@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { isAuth } from '@/middlewares';
 import culinaryRouter from './culinary';
-import newsRouter from './new';
+import newsRouter from './news';
 import ordersRouter from './orders';
 import roomsRouter from './rooms';
 

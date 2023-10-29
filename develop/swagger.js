@@ -4,7 +4,7 @@ import path from 'path';
 const doc = {
     info: {
         title: 'Freyja API',
-        description: 'Description'
+        description: '六角學院的旅館 API 系統'
     },
     securityDefinitions: {
         bearerAuth: {

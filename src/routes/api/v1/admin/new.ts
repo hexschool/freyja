@@ -35,7 +35,7 @@ router.post(
             }
         }
      */
-    '/news',
+    '/',
     NewController.createOneNew
 );
 
@@ -70,7 +70,7 @@ router.put(
             }
         }
      */
-    '/news/:id',
+    '/:id',
     NewController.updateNewById
 );
 
@@ -97,7 +97,7 @@ router.delete(
             }
         }
      */
-    '/news/:id',
+    '/:id',
     NewController.deleteNewById
 );
 

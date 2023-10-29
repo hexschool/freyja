@@ -37,7 +37,7 @@ router.post(
             }
         }
      */
-    '/culinary',
+    '/',
     CulinaryController.createOneCulinary
 );
 
@@ -80,7 +80,7 @@ router.put(
             }
         }
      */
-    '/culinary/:id',
+    '/:id',
     CulinaryController.updateCulinaryById
 );
 
@@ -108,7 +108,7 @@ router.delete(
             }
         }
      */
-    '/culinary/:id',
+    '/:id',
     CulinaryController.deleteCulinaryById
 );
 

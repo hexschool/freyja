@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { isAuth } from '@/middlewares';
 import culinaryRouter from './culinary';
-import newRouter from './new';
+import newsRouter from './new';
 import ordersRouter from './orders';
 import roomsRouter from './rooms';
 
@@ -13,13 +13,15 @@ router.use(
     /**
      * #swagger.tags = ['Admin/News - 最新消息管理']
      */
-    newRouter
+    '/news',
+    newsRouter
 );
 
 router.use(
     /**
      * #swagger.tags = ['Admin/Culinary - 美味佳餚管理']
      */
+    '/culinary',
     culinaryRouter
 );
 
@@ -27,6 +29,7 @@ router.use(
     /**
      * #swagger.tags = ['Admin/Rooms - 房型管理']
      */
+    '/rooms',
     roomsRouter
 );
 
@@ -34,6 +37,7 @@ router.use(
     /**
      * #swagger.tags = ['Admin/Orders - 訂單管理']
      */
+    '/orders',
     ordersRouter
 );
 

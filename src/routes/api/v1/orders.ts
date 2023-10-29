@@ -54,7 +54,7 @@ router.get(
             }
         }
      */
-    '/orders',
+    '/',
     OrderController.getUserOrderList
 );
 
@@ -110,7 +110,7 @@ router.get(
             }
         }
      */
-    '/orders/:id',
+    '/:id',
     OrderController.getOrderById
 );
 
@@ -174,7 +174,7 @@ router.post(
             }
         }
      */
-    '/orders',
+    '/',
     checkOrder,
     OrderController.createOneOrder
 );
@@ -231,7 +231,7 @@ router.delete(
             }
         }
      */
-    '/orders/:id',
+    '/:id',
     OrderController.deleteOrderById
 );
 

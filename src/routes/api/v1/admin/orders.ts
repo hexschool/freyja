@@ -83,7 +83,7 @@ router.put(
             }
         }
      */
-    '/orders/:id',
+    '/:id',
     checkOrder,
     OrderController.updateOrderById
 );

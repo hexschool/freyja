@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import culinaryRouter from './culinary';
-import newRouter from './new';
+import newsRouter from './new';
 
 const router = Router();
 
@@ -8,13 +8,15 @@ router.use(
     /**
      * #swagger.tags = ["Home/News - 最新消息"]
      */
-    newRouter
+    '/news',
+    newsRouter
 );
 
 router.use(
     /**
      * #swagger.tags = ["Home/Culinary - 美味佳餚"]
      */
+    '/culinary',
     culinaryRouter
 );
 

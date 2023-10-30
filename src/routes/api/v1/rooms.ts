@@ -5,7 +5,7 @@ const router = Router();
 
 router.get(
     /**
-     * #swagger.description  = "房型列表"
+     * #swagger.description  = "取得房型列表"
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
@@ -38,7 +38,7 @@ router.get(
 
 router.get(
     /**
-     * #swagger.description  = "房型詳細資料"
+     * #swagger.description  = "取得房型詳細資料"
      * #swagger.responses[200] = {
             schema: {
                 "status": true,

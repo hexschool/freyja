@@ -2,6 +2,21 @@ import type { RequestHandler } from 'express';
 import createHttpError from 'http-errors';
 import OrderModel from '@/models/order';
 
+export const getAllOrderList: RequestHandler = async (_req, res, next) => {
+    try {
+        const result = await OrderModel.find().populate({
+            path: 'roomId'
+        });
+
+        res.send({
+            status: true,
+            result
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 export const getUserOrderList: RequestHandler = async (req, res, next) => {
     try {
         const result = await OrderModel.find({

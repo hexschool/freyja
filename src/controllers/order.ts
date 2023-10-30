@@ -80,8 +80,7 @@ export const updateOrderById: RequestHandler = async (req, res, next) => {
 
         const result = await OrderModel.findOneAndUpdate(
             {
-                _id: req.params.id,
-                orderUserId: req.user?._id
+                _id: req.params.id
             },
             {
                 roomId,
@@ -110,12 +109,41 @@ export const updateOrderById: RequestHandler = async (req, res, next) => {
     }
 };
 
-export const deleteOrderById: RequestHandler = async (req, res, next) => {
+export const deleteOrderByUser: RequestHandler = async (req, res, next) => {
     try {
         const result = await OrderModel.findOneAndUpdate(
             {
                 _id: req.params.id,
                 orderUserId: req.user?._id
+            },
+            {
+                status: -1
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        ).populate({
+            path: 'roomId'
+        });
+        if (!result) {
+            throw createHttpError(404, '此訂單不存在');
+        }
+
+        res.send({
+            status: true,
+            result
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const deleteOrderByAdmin: RequestHandler = async (req, res, next) => {
+    try {
+        const result = await OrderModel.findOneAndUpdate(
+            {
+                _id: req.params.id
             },
             {
                 status: -1

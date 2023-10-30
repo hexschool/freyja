@@ -191,7 +191,7 @@ router.delete(
         }
      */
     '/:id',
-    OrderController.deleteOrderById
+    OrderController.deleteOrderByAdmin
 );
 
 export default router;

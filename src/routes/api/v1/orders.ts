@@ -232,7 +232,7 @@ router.delete(
         }
      */
     '/:id',
-    OrderController.deleteOrderById
+    OrderController.deleteOrderByUser
 );
 
 export default router;

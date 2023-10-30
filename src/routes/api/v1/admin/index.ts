@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { isAuth } from '@/middlewares';
+import { isAdmin } from '@/middlewares';
 import culinaryRouter from './culinary';
 import newsRouter from './news';
 import ordersRouter from './orders';
@@ -7,7 +7,7 @@ import roomsRouter from './rooms';
 
 const router = Router();
 
-router.use(isAuth);
+router.use(isAdmin);
 
 router.use(
     /**

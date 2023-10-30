@@ -34,6 +34,21 @@ export const isAuth: RequestHandler = async (req, _res, next) => {
     }
 };
 
+// TODO:實作管理員權限
+export const isAdmin: RequestHandler = async (req, res, next) => {
+    /**
+     * #swagger.security = [{ "bearerAuth": [] }]
+     * #swagger.responses[403] = {
+            description: '重新登入',
+            schema: {
+                "status": false,
+                "message": "請重新登入",
+            }
+        }
+     */
+    isAuth(req, res, next);
+};
+
 export const checkRequestBodyValidator: RequestHandler = (req, _res, next) => {
     try {
         for (let [key, value] of Object.entries(req.body)) {

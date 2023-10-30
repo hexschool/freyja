@@ -1,10 +1,8 @@
 import { Router } from 'express';
 import * as OrderController from '@/controllers/order';
-import { checkOrder, isAuth } from '@/middlewares';
+import { checkOrder } from '@/middlewares';
 
 const router = Router();
-
-router.use(isAuth);
 
 router.put(
     /**

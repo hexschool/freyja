@@ -223,6 +223,9 @@ docker run -p 3005:3005 -d freyja:v1
 
 - 參考資料 : [關於從 Heroku 跳到 Render 這件事情](https://israynotarray.com/other/20221213/3036227586/)
 
+## 待辦事項
+- 實作管理員權限
+
 ## 補充資源
 
 - [Mac OS X 安裝 nvm](https://israynotarray.com/nodejs/20200124/3404456418/)

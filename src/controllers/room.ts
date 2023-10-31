@@ -1,6 +1,5 @@
 import type { RequestHandler } from 'express';
 import createHttpError from 'http-errors';
-import OrderModel from '@/models/order';
 import RoomModel from '@/models/room';
 
 export const getRoomList: RequestHandler = async (_req, res, next) => {
@@ -98,16 +97,6 @@ export const deleteRoomById: RequestHandler = async (req, res, next) => {
         if (!result) {
             throw createHttpError(404, '此房型不存在');
         }
-
-        // 將該房型訂單取消
-        await OrderModel.updateMany(
-            {
-                roomId: result._id
-            },
-            {
-                status: -1
-            }
-        );
 
         res.send({
             status: true,

@@ -65,6 +65,10 @@ export const createOneOrder: RequestHandler = async (req, res, next) => {
             userInfo
         });
 
+        await result.populate({
+            path: 'roomId'
+        });
+
         res.send({
             status: true,
             result

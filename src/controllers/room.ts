@@ -4,7 +4,9 @@ import RoomModel from '@/models/room';
 
 export const getRoomList: RequestHandler = async (_req, res, next) => {
     try {
-        const result = await RoomModel.find();
+        const result = await RoomModel.find({
+            status: 1
+        });
 
         res.send({
             status: true,
@@ -17,7 +19,10 @@ export const getRoomList: RequestHandler = async (_req, res, next) => {
 
 export const getRoomById: RequestHandler = async (req, res, next) => {
     try {
-        const result = await RoomModel.findById(req.params.id);
+        const result = await RoomModel.findOne({
+            _id: req.params.id,
+            status: 1
+        });
         if (!result) {
             throw createHttpError(404, '此房型不存在');
         }
@@ -93,7 +98,16 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
 
 export const deleteRoomById: RequestHandler = async (req, res, next) => {
     try {
-        const result = await RoomModel.findByIdAndRemove(req.params.id);
+        const result = await RoomModel.findByIdAndUpdate(
+            req.params.id,
+            {
+                status: -1
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
         if (!result) {
             throw createHttpError(404, '此房型不存在');
         }

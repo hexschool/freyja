@@ -37,6 +37,7 @@ router.get(
                             "bedInfo": "一張大床",
                             "maxPeople": 4,
                             "price": 10000,
+                            "status": 1,
                             "createdAt": "2023-10-10T09:54:40.063Z",
                             "updatedAt": "2023-10-10T09:54:40.063Z"
                         },
@@ -107,6 +108,7 @@ router.put(
                         "bedInfo": "一張大床",
                         "maxPeople": 4,
                         "price": 10000,
+                        "status": 1,
                         "createdAt": "2023-10-10T09:54:40.063Z",
                         "updatedAt": "2023-10-10T09:54:40.063Z"
                     },
@@ -170,6 +172,7 @@ router.delete(
                         "bedInfo": "一張大床",
                         "maxPeople": 4,
                         "price": 10000,
+                        "status": 1,
                         "createdAt": "2023-10-10T09:54:40.063Z",
                         "updatedAt": "2023-10-10T09:54:40.063Z"
                     },

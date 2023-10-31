@@ -11,6 +11,8 @@ export interface IRoom extends Document {
     bedInfo: string;
     maxPeople: number;
     price: number;
+    // 可使用：1，已刪除：-1
+    status: number;
 }
 
 const roomSchema = new Schema<IRoom>(
@@ -70,6 +72,10 @@ const roomSchema = new Schema<IRoom>(
         price: {
             type: Number,
             required: [true, 'price 未填寫']
+        },
+        status: {
+            type: Number,
+            default: 1
         }
     },
     {

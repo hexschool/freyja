@@ -225,6 +225,7 @@ docker run -p 3005:3005 -d freyja:v1
 
 ## 待辦事項
 - 實作管理員權限
+    - 由於本專案沒有實作會員管理機制，因此預留了 isAdmin  middleware 給予自行實作。  
 
 ## 補充資源
 

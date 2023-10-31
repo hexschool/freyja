@@ -104,7 +104,10 @@ export const checkOrder: RequestHandler = async (req, _res, next) => {
     try {
         const { roomId, checkInDate, checkOutDate, peopleNum } = req.body;
 
-        const roomInfo = await RoomModel.findById(roomId);
+        const roomInfo = await RoomModel.findOne({
+            _id: roomId,
+            status: 1
+        });
 
         if (!roomInfo) {
             throw createHttpError(404, '此房型不存在');

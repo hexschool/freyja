@@ -10,15 +10,7 @@ router.get(
             schema: {
                 "status": true,
                 "result": [
-                    {
-                        "_id": "653e30dafa27fbbeb053501b",
-                        "title": "海霸",
-                        "description": "以新鮮海產料理聞名...",
-                        "diningTime": "SUN-MON 11:00-20:30",
-                        "image": "https://fakeimg.pl/300/",
-                        "createdAt": "2023-10-29T10:15:54.811Z",
-                        "updatedAt": "2023-10-29T10:15:54.811Z"
-                    }
+                    { $ref: '#/definitions/CulinaryResponses' },
                 ]
             }
         }
@@ -33,25 +25,12 @@ router.post(
      * #swagger.parameters['body'] = {
             in: 'body',
             required: true,
-            schema: {
-                title: "海霸",
-                description: "以新鮮海產料理聞名...",
-                diningTime: "SUN-MON 11:00-20:30",
-                image: "https://fakeimg.pl/300/"
-            }
+            schema: { $ref: '#/definitions/CulinaryBody' },
         }
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "653e30dafa27fbbeb053501b",
-                    "title": "海霸",
-                    "description": "以新鮮海產料理聞名...",
-                    "diningTime": "SUN-MON 11:00-20:30",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-29T10:15:54.811Z",
-                    "updatedAt": "2023-10-29T10:15:54.811Z"
-                }
+                "result": { $ref: '#/definitions/CulinaryResponses' },
             }
         }
      * #swagger.responses[400] = {
@@ -70,25 +49,12 @@ router.put(
      * #swagger.description  = "修改美味佳餚"
      * #swagger.parameters['body'] = {
             in: 'body',
-            schema: {
-                title: "修改 - 海霸",
-                description: "修改 - 以新鮮海產料理聞名...",
-                diningTime: "SUN-MON 11:00-20:30",
-                image: "修改 - https://fakeimg.pl/300/"
-            }
+            schema: { $ref: '#/definitions/CulinaryBody' },
         }
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "653e30dafa27fbbeb053501b",
-                    "title": "海霸",
-                    "description": "以新鮮海產料理聞名...",
-                    "diningTime": "SUN-MON 11:00-20:30",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-29T10:15:54.811Z",
-                    "updatedAt": "2023-10-29T10:15:54.811Z"
-                }
+                "result": { $ref: '#/definitions/CulinaryResponses' },
             }
         }
      * #swagger.responses[400] = {
@@ -114,15 +80,7 @@ router.delete(
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "653e30dafa27fbbeb053501b",
-                    "title": "海霸",
-                    "description": "以新鮮海產料理聞名...",
-                    "diningTime": "SUN-MON 11:00-20:30",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-29T10:15:54.811Z",
-                    "updatedAt": "2023-10-29T10:15:54.811Z"
-                }
+                "result": { $ref: '#/definitions/CulinaryResponses' },
             }
         }
      * #swagger.responses[404] = {

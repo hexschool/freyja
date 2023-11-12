@@ -1,10 +1,10 @@
 import { Schema, model, type Document } from 'mongoose';
 import validator from 'validator';
+import itemSchema, { IItem } from './schema/item';
 
 export interface IRoom extends Document {
     name: string;
     description: string;
-    content: string;
     imageUrl: string;
     imageUrlList: string[];
     areaInfo: string;
@@ -13,6 +13,8 @@ export interface IRoom extends Document {
     price: number;
     // 可使用：1，已刪除：-1
     status: number;
+    facilityInfo: IItem[];
+    amenityInfo: IItem[];
 }
 
 const roomSchema = new Schema<IRoom>(
@@ -24,10 +26,6 @@ const roomSchema = new Schema<IRoom>(
         description: {
             type: String,
             required: [true, 'description 未填寫']
-        },
-        content: {
-            type: String,
-            required: [true, 'content 未填寫']
         },
         imageUrl: {
             type: String,
@@ -76,6 +74,14 @@ const roomSchema = new Schema<IRoom>(
         status: {
             type: Number,
             default: 1
+        },
+        facilityInfo: {
+            type: [itemSchema],
+            default: []
+        },
+        amenityInfo: {
+            type: [itemSchema],
+            default: []
         }
     },
     {

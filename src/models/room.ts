@@ -4,7 +4,6 @@ import validator from 'validator';
 export interface IRoom extends Document {
     name: string;
     description: string;
-    content: string;
     imageUrl: string;
     imageUrlList: string[];
     areaInfo: string;
@@ -24,10 +23,6 @@ const roomSchema = new Schema<IRoom>(
         description: {
             type: String,
             required: [true, 'description 未填寫']
-        },
-        content: {
-            type: String,
-            required: [true, 'content 未填寫']
         },
         imageUrl: {
             type: String,

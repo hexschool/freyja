@@ -38,12 +38,11 @@ export const getRoomById: RequestHandler = async (req, res, next) => {
 
 export const createOneRoom: RequestHandler = async (req, res, next) => {
     try {
-        const { name, description, content, imageUrl, imageUrlList, areaInfo, bedInfo, maxPeople, price } = req.body;
+        const { name, description, imageUrl, imageUrlList, areaInfo, bedInfo, maxPeople, price } = req.body;
 
         const result = await RoomModel.create({
             name,
             description,
-            content,
             imageUrl,
             imageUrlList,
             areaInfo,
@@ -63,14 +62,13 @@ export const createOneRoom: RequestHandler = async (req, res, next) => {
 
 export const updateRoomById: RequestHandler = async (req, res, next) => {
     try {
-        const { name, description, content, imageUrl, imageUrlList, areaInfo, bedInfo, maxPeople, price } = req.body;
+        const { name, description, imageUrl, imageUrlList, areaInfo, bedInfo, maxPeople, price } = req.body;
 
         const result = await RoomModel.findByIdAndUpdate(
             req.params.id,
             {
                 name,
                 description,
-                content,
                 imageUrl,
                 imageUrlList,
                 areaInfo,

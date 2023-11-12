@@ -10,14 +10,7 @@ router.get(
             schema: {
                 "status": true,
                 "result": [
-                    {
-                        "_id": "6523e9f23a22dd8d8207ef7c",
-                        "title": "秋季旅遊，豪華享受方案",
-                        "description": "秋天就是要來場豪華的旅遊...",
-                        "image": "https://fakeimg.pl/300/",
-                        "createdAt": "2023-10-09T11:54:26.586Z",
-                        "updatedAt": "2023-10-09T11:54:26.586Z"
-                    },
+                    { $ref: '#/definitions/NewsResponses' },
                 ]
             }
         }
@@ -32,23 +25,12 @@ router.post(
      * #swagger.parameters['body'] = {
             in: 'body',
             required: true,
-            schema: {
-                title: "秋季旅遊，豪華享受方案",
-                description: "秋天就是要來場豪華的旅遊...",
-                image: "https://fakeimg.pl/300/"
-            }
+            schema: { $ref: '#/definitions/NewsBody' },
         }
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "6523e9fc3a22dd8d8207ef80",
-                    "title": "秋季旅遊，豪華享受方案2",
-                    "description": "秋天就是要來場豪華的旅遊...",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-09T11:54:36.967Z",
-                    "updatedAt": "2023-10-09T11:54:36.967Z"
-                }
+                "result": { $ref: '#/definitions/NewsResponses' },
             }
         }
      * #swagger.responses[400] = {
@@ -67,23 +49,12 @@ router.put(
      * #swagger.description  = "修改最新消息"
      * #swagger.parameters['body'] = {
             in: 'body',
-            schema: {
-                title: "修改 - 秋季旅遊，豪華享受方案",
-                description: "修改 - 秋天就是要來場豪華的旅遊...",
-                image: "修改 - https://fakeimg.pl/300/"
-            }
+            schema: { $ref: '#/definitions/NewsBody' },
         }
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "6523e9fc3a22dd8d8207ef80",
-                    "title": "秋季旅遊，豪華享受方案2",
-                    "description": "秋天就是要來場豪華的旅遊...",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-09T11:54:36.967Z",
-                    "updatedAt": "2023-10-09T11:54:36.967Z"
-                }
+                "result": { $ref: '#/definitions/NewsResponses' },
             }
         }
      * #swagger.responses[404] = {
@@ -103,14 +74,7 @@ router.delete(
      * #swagger.responses[200] = {
             schema: {
                 "status": true,
-                "result": {
-                    "_id": "6523e9fc3a22dd8d8207ef80",
-                    "title": "秋季旅遊，豪華享受方案2",
-                    "description": "秋天就是要來場豪華的旅遊...",
-                    "image": "https://fakeimg.pl/300/",
-                    "createdAt": "2023-10-09T11:54:36.967Z",
-                    "updatedAt": "2023-10-09T11:54:36.967Z"
-                }
+                "result": { $ref: '#/definitions/NewsResponses' },
             }
         }
      * #swagger.responses[404] = {

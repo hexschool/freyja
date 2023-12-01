@@ -2,10 +2,10 @@
 
 # 六角旅館 API 系統
 
-![start](https://img.shields.io/github/stars/kimnTai/freyja.svg)｜
-![forks](https://img.shields.io/github/forks/kimnTai/freyja.svg)｜
-![issues-pr](https://img.shields.io/github/issues-pr/kimnTai/freyja.svg)｜
-![issues](https://img.shields.io/github/issues/kimnTai/freyja.svg)
+![start](https://img.shields.io/github/stars/hexschool/freyja.svg)｜
+![forks](https://img.shields.io/github/forks/hexschool/freyja.svg)｜
+![issues-pr](https://img.shields.io/github/issues-pr/hexschool/freyja.svg)｜
+![issues](https://img.shields.io/github/issues/hexschool/freyja.svg)
 
 ## 關於專案
 
@@ -34,7 +34,7 @@ Node.js 版本建議為：`18.16.0` 以上
 ### 取得專案
 
 ```bash
-git clone https://github.com/kimnTai/freyja.git
+git clone https://github.com/hexschool/freyja.git
 ```
 
 ### 移動到專案內

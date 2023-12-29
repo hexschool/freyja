@@ -26,8 +26,8 @@ router.post(
                     "address": {
                         "zipcode": 802,
                         "detail": "文山路23號",
-                        "county": "高雄市",
-                        "city": "苓雅區"
+                        "city": "高雄市",
+                        "county": "苓雅區"
                     },
                     "_id": "6533f0ef4cdf5b7f762747b0",
                     "name": "Lori Murphy",
@@ -85,8 +85,8 @@ router.post(
                     "address": {
                         "zipcode": 802,
                         "detail": "文山路23號",
-                        "county": "高雄市",
-                        "city": "苓雅區"
+                        "city": "高雄市",
+                        "county": "苓雅區"
                     },
                     "_id": "6533f0ef4cdf5b7f762747b0",
                     "name": "Lori Murphy",
@@ -166,8 +166,8 @@ router.get(
                     "address": {
                         "zipcode": 802,
                         "detail": "文山路23號",
-                        "county": "高雄市",
-                        "city": "苓雅區"
+                        "city": "高雄市",
+                        "county": "苓雅區"
                     },
                     "_id": "6533f0ef4cdf5b7f762747b0",
                     "name": "Lori Murphy",

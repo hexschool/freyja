@@ -227,6 +227,10 @@ docker run -p 3005:3005 -d freyja:v1
 - 實作管理員權限
     - 由於本專案沒有實作會員管理機制，因此預留了 isAdmin  middleware 給予自行實作。  
 
+## 部署教學
+
+- [TypeScript 30 天證書培訓營之後端完整部署教學](https://israynotarray.com/nodejs/20240101/268408973/)
+
 ## 補充資源
 
 - [Mac OS X 安裝 nvm](https://israynotarray.com/nodejs/20200124/3404456418/)

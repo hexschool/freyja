@@ -47,6 +47,7 @@ export const createOneRoom: RequestHandler = async (req, res, next) => {
             bedInfo,
             maxPeople,
             price,
+            layoutInfo,
             facilityInfo,
             amenityInfo
         } = req.body;
@@ -60,6 +61,7 @@ export const createOneRoom: RequestHandler = async (req, res, next) => {
             bedInfo,
             maxPeople,
             price,
+            layoutInfo,
             facilityInfo,
             amenityInfo
         });
@@ -84,6 +86,7 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
             bedInfo,
             maxPeople,
             price,
+            layoutInfo,
             facilityInfo,
             amenityInfo
         } = req.body;
@@ -99,6 +102,7 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
                 bedInfo,
                 maxPeople,
                 price,
+                layoutInfo,
                 facilityInfo,
                 amenityInfo
             },

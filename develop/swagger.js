@@ -61,6 +61,7 @@ const doc = {
             bedInfo: '一張大床',
             maxPeople: 4,
             price: 10000,
+            layoutInfo: [{ title: '市景', isProvide: true }],
             facilityInfo: [{ title: '平面電視', isProvide: true }],
             amenityInfo: [{ title: '衛生紙', isProvide: true }]
         },
@@ -74,6 +75,7 @@ const doc = {
             maxPeople: 4,
             price: 10000,
             status: 1,
+            layoutInfo: [{ title: '市景', isProvide: true }],
             facilityInfo: [{ title: '平面電視', isProvide: true }],
             amenityInfo: [{ title: '衛生紙', isProvide: true }],
             _id: '653e4661336cdccc752127a0',

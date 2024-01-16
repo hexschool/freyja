@@ -13,6 +13,7 @@ export interface IRoom extends Document {
     price: number;
     // 可使用：1，已刪除：-1
     status: number;
+    layoutInfo: IItem[];
     facilityInfo: IItem[];
     amenityInfo: IItem[];
 }
@@ -74,6 +75,10 @@ const roomSchema = new Schema<IRoom>(
         status: {
             type: Number,
             default: 1
+        },
+        layoutInfo: {
+            type: [itemSchema],
+            default: []
         },
         facilityInfo: {
             type: [itemSchema],

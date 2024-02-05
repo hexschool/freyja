@@ -1,4 +1,5 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
+import { generateToken } from '@/utils';
 
 export const sendNotFoundError: RequestHandler = (_req, res) => {
     res.status(404).send({
@@ -37,6 +38,15 @@ export const catchGlobalError = () => {
     // 初始化，捕捉全域錯誤
     if (!process.env.JWT_SECRET) {
         throw new Error('JWT_SECRET 未設定!');
+    }
+
+    try {
+        generateToken({ userId: '' });
+    } catch (error) {
+        if (/['"]/.test(`${process.env.JWT_EXPIRES_DAY}`)) {
+            throw new Error(`JWT_EXPIRES_DAY 不需要加雙引號或單引號`);
+        }
+        throw new Error(`JWT_EXPIRES_DAY 應該是秒數或表示時間跨度的字串，例如："1d"、"20h"、60`);
     }
 
     process.on('uncaughtException', error => {

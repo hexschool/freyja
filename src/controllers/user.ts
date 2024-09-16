@@ -112,6 +112,10 @@ export const updateInfo: RequestHandler = async (req, res, next) => {
 
         const { userId, name, phone, birthday, address } = req.body;
 
+        if (!userId) {
+            throw createHttpError(400, 'userId 未填寫');
+        }
+
         const result = await UsersModel.findByIdAndUpdate(
             userId,
             {

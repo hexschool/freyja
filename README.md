@@ -84,7 +84,7 @@ EMAILER_PASSWORD = "dwuq asxf dowp pidw"
 
 若需要使用 Email 服務，需取得 EMAILER_PASSWORD。
 
-此專案有使用 Nodemailer 套件，預設使用 Gmail 寄信，可以參考「[Node.js 應用篇 - 使用 Nodemailer 來發送 Email](https://israynotarray.com/nodejs/20230722/1626712457/)」 來取得 EMAILER_PASSWORD 應用程式密碼。
+此專案有使用 Nodemailer 套件，預設使用 Gmail 寄信，可以參考「[六角旅館 API 系統（freyja）之後端完整部署教學](https://israynotarray.com/nodejs/20240101/268408973/)」 來取得 EMAILER_PASSWORD 應用程式密碼。
 
 ### 運行專案
 
@@ -229,7 +229,7 @@ docker run -p 3005:3005 -d freyja:v1
 
 ## 部署教學
 
-- [TypeScript 30 天證書培訓營之後端完整部署教學](https://israynotarray.com/nodejs/20240101/268408973/)
+- [六角旅館 API 系統（freyja）之後端完整部署教學](https://israynotarray.com/nodejs/20240101/268408973/)
 
 ## 補充資源
 
